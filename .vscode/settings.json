@@ -22,5 +22,8 @@
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
         "files.trimTrailingWhitespace": false
+    },
+    "[c]": {
+        "editor.formatOnSave": false
     }
 }
