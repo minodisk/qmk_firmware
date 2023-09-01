@@ -56,6 +56,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN D3
 #define RGBLED_NUM 50 // Number of LEDs
 
+#define USB_SUSPEND_WAKEUP_DELAY 200
+#define NO_USB_STARTUP_CHECK
+
 #ifdef RGB_MATRIX_ENABLE
   #define DRIVER_LED_TOTAL RGBLED_NUM
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
