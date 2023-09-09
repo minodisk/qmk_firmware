@@ -14,15 +14,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "os_detection.h"
 
-#define L1_ESC   LT(1,KC_ESC)
-#define L2_SPC   LT(2,KC_SPC)
+#define L2_ESC   LT(2,KC_ESC)
+#define L3_SPC   LT(3,KC_SPC)
 #define GUI_SPC  GUI_T(KC_SPC)
 #define GUI_EN   GUI_T(KC_LNG2)
 #define ALT_EN   ALT_T(KC_LNG2)
 #define CTL_JA   CTL_T(KC_LNG1)
 #define ALT_JA   ALT_T(KC_LNG1)
-#define SC_SLEP  G(A(KC_POWER))
+#define SC_SLEP  G(A(KC_PWR))
 #define SC_IME   G(KC_SPC)
 #define SC_SPOT  A(KC_SPC)
 #define SC_SSF   G(S(KC_4))
@@ -73,36 +74,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
       KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
-      SC_SSC,  SC_SSF,  SC_EMO,  CTL_JA,  ALT_EN,  GUI_SPC,  L1_ESC, L2_SPC,  KC_BSPC, KC_ENT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-      ),
+      SC_SSC,  SC_SSF,  SC_EMO,  CTL_JA,  ALT_EN,  GUI_SPC,  L2_ESC, L3_SPC,  KC_BSPC, KC_ENT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  ),
 
   [_WIN] = LAYOUT(
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
       KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
-      SC_SSC,  SC_SSF,  SC_EMO,  CTL_JA,  ALT_EN,  KC_SPC,  L1_ESC, L2_SPC,  KC_BSPC, KC_ENT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-      ),
+      SC_SSC,  SC_SSF,  CTL_JA,  ALT_EN,  KC_LCTL, KC_SPC,   L2_ESC, L3_SPC,  KC_BSPC, KC_ENT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  ),
 
   [_LOWER] = LAYOUT(
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
       _______, _______, _______, _______, _______, _______,                   KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, _______,
       _______, _______, _______, _______, _______, _______,                   _______, _______, KC_LBRC, KC_RBRC, _______, _______,
-      _______, _______, _______, _______, SC_0,    SC_1,    XXXXXXX,   MO(3), SC_2,    SC_3,    KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
-      ),
+      _______, _______, _______, _______, SC_0,    SC_1,    XXXXXXX,   MO(4), SC_2,    SC_3,    KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+  ),
 
   [_RAISE] = LAYOUT(
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PLUS,
       _______, _______, _______, _______, _______, _______,                   KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, _______,
       _______, _______, _______, _______, _______, XXXXXXX,                   SC_SPOT, _______, KC_LCBR, KC_RCBR, _______, _______,
-      _______, _______, _______, _______, SC_4,    SC_5,    MO(3),   XXXXXXX, SC_6,    SC_7,    KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
-      ),
+      _______, _______, _______, _______, SC_4,    SC_5,    MO(4),   XXXXXXX, SC_6,    SC_7,    KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+  ),
 
   [_ADJUST] =  LAYOUT(
-      QK_BOOT, XXXXXXX, XXXXXXX, SC_E,    SC_R,    KC_VOLU,                   RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,KC_POWER,
+      QK_BOOT, XXXXXXX, XXXXXXX, SC_E,    SC_R,    KC_VOLU,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_PWR,
       XXXXXXX, XXXXXXX, XXXXXXX, SC_D,    SC_F,    KC_VOLD,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
       XXXXXXX, XXXXXXX, XXXXXXX, SC_C,    SC_V,    KC_MPLY,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SC_SLEP,
       _______, _______, _______, _______, SC_8,    SC_9,    XXXXXXX, XXXXXXX, SC_10,   SC_11,   RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD
-      )
+  )
 
 };
 
