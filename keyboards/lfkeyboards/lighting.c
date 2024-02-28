@@ -11,6 +11,7 @@
 #include "lighting.h"
 #include "debug.h"
 #include "rgblight.h"
+#include "audio.h"
 
 
 extern rgblight_config_t rgblight_config; // Declared in rgblight.c
@@ -112,7 +113,7 @@ void set_backlight_by_keymap(uint8_t col, uint8_t row){
 #endif
 }
 
-void force_issi_refresh(void){
+void force_issi_refresh(){
 #ifdef ISSI_ENABLE
     issi_devices[0]->led_dirty = true;
     update_issi(0, true);
@@ -121,7 +122,7 @@ void force_issi_refresh(void){
 #endif
 }
 
-void led_test(void){
+void led_test(){
 #ifdef ISSI_ENABLE
 #ifdef WATCHDOG_ENABLE
     // This test take a long time to run, disable the WTD until its complete

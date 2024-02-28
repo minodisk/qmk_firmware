@@ -1,4 +1,3 @@
-// Copyright 2022 Pablo Martinez (@elpekenin)
 // Copyright 2022 Daniel Kao (dkao)
 // Copyright 2022 Stefan Kerkmann (KarlK90)
 // Copyright 2022 Ulrich Spörlein (@uqs)
@@ -8,8 +7,9 @@
 // Copyright 2020 Ploopy Corporation
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "pointing_device_internal.h"
+#include "debug.h"
 #include "pmw33xx_common.h"
+#include "print.h"
 #include "string.h"
 #include "wait.h"
 #include "spi_master.h"
@@ -18,11 +18,10 @@
 extern const uint8_t pmw33xx_firmware_data[PMW33XX_FIRMWARE_LENGTH] PROGMEM;
 extern const uint8_t pmw33xx_firmware_signature[3] PROGMEM;
 
-static const pin_t cs_pins_left[]  = PMW33XX_CS_PINS;
-static const pin_t cs_pins_right[] = PMW33XX_CS_PINS_RIGHT;
+static const pin_t cs_pins[]                                 = PMW33XX_CS_PINS;
+static bool        in_burst[sizeof(cs_pins) / sizeof(pin_t)] = {0};
 
-static bool in_burst_left[ARRAY_SIZE(cs_pins_left)]   = {0};
-static bool in_burst_right[ARRAY_SIZE(cs_pins_right)] = {0};
+const size_t pmw33xx_number_of_sensors = sizeof(cs_pins) / sizeof(pin_t);
 
 bool __attribute__((cold)) pmw33xx_upload_firmware(uint8_t sensor);
 bool __attribute__((cold)) pmw33xx_check_signature(uint8_t sensor);
@@ -155,7 +154,7 @@ bool pmw33xx_init(uint8_t sensor) {
     pmw33xx_read(sensor, REG_Delta_Y_H);
 
     if (!pmw33xx_upload_firmware(sensor)) {
-        pd_dprintf("PMW33XX (%d): firmware upload failed!\n", sensor);
+        dprintf("PMW33XX (%d): firmware upload failed!\n", sensor);
         return false;
     }
 
@@ -171,7 +170,7 @@ bool pmw33xx_init(uint8_t sensor) {
     pmw33xx_write(sensor, REG_Lift_Config, PMW33XX_LIFTOFF_DISTANCE);
 
     if (!pmw33xx_check_signature(sensor)) {
-        pd_dprintf("PMW33XX (%d): firmware signature verification failed!\n", sensor);
+        dprintf("PMW33XX (%d): firmware signature verification failed!\n", sensor);
         return false;
     }
 
@@ -186,7 +185,7 @@ pmw33xx_report_t pmw33xx_read_burst(uint8_t sensor) {
     }
 
     if (!in_burst[sensor]) {
-        pd_dprintf("PMW33XX (%d): burst\n", sensor);
+        dprintf("PMW33XX (%d): burst\n", sensor);
         if (!pmw33xx_write(sensor, REG_Motion_Burst, 0x00)) {
             return report;
         }
@@ -209,7 +208,9 @@ pmw33xx_report_t pmw33xx_read_burst(uint8_t sensor) {
 
     spi_stop();
 
-    pd_dprintf("PMW33XX (%d): motion: 0x%x dx: %i dy: %i\n", sensor, report.motion.w, report.delta_x, report.delta_y);
+    if (debug_config.mouse) {
+        dprintf("PMW33XX (%d): motion: 0x%x dx: %i dy: %i\n", sensor, report.motion.w, report.delta_x, report.delta_y);
+    }
 
     report.delta_x *= -1;
     report.delta_y *= -1;

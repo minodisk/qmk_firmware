@@ -2,9 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #pragma once
 
-#define SPLIT_USB_DETECT // Added for Elite-C to work
-
-#define QUICK_TAP_TERM 0
+#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 200
 
 #ifdef RGB_MATRIX_ENABLE

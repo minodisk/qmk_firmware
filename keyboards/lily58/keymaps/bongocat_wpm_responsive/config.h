@@ -28,7 +28,7 @@
  #define MASTER_LEFT
  // #define EE_HANDS
 
- #define QUICK_TAP_TERM 0
+ #define TAPPING_FORCE_HOLD
  #define TAPPING_TERM 200
 
  #undef RGBLED_NUM

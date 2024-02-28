@@ -2,13 +2,10 @@
 
 #include <avr/timer_avr.h>
 #include <avr/wdt.h>
+#include "audio.h"
 #include "issi.h"
 #include "TWIlib.h"
 #include "lighting.h"
-
-#ifdef AUDIO_ENABLE
-#    include "audio.h"
-#endif
 
 uint16_t click_hz = CLICK_HZ;
 uint16_t click_time = CLICK_MS;
@@ -137,7 +134,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
     return process_record_user(keycode, record);
 }
 
-void reset_keyboard_kb(void) {
+void reset_keyboard_kb() {
 #ifdef WATCHDOG_ENABLE
     MCUSR = 0;
     wdt_disable();
@@ -151,12 +148,11 @@ void reset_keyboard_kb(void) {
     reset_keyboard();
 }
 
-bool led_update_kb(led_t led_state) {
-    bool res = led_update_user(led_state);
-    if(res) {
+void led_set_kb(uint8_t usb_led) {
+    // put your keyboard LED indicator (ex: Caps Lock LED) toggling code here
 #ifdef ISSI_ENABLE
 #    ifdef CAPSLOCK_LED
-    if (led_state.caps_lock) {
+    if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
         activateLED(0, 3, 7, 255);
     } else {
         activateLED(0, 3, 7, 0);
@@ -164,8 +160,7 @@ bool led_update_kb(led_t led_state) {
 #    endif // CAPSLOCK_LED
 #endif // ISS_ENABLE
 
-    }
-    return res;
+    led_set_user(usb_led);
 }
 
 // LFK lighting info
@@ -175,3 +170,16 @@ const uint8_t rgb_sequence[] = {
     12, 11, 10, 9, 16, 32, 31, 30, 28, 25, 24, 22, 21,
     20, 19, 18, 17, 1, 2, 3, 4, 5, 6, 7, 8, 14, 13
 };
+
+// Maps switch LEDs from Row/Col to ISSI matrix.
+// Value breakdown:
+//     Bit     | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+//            /    \ ISSI Col  |    ISSI Row   |
+//          matrix idx
+const uint8_t switch_leds[MATRIX_ROWS][MATRIX_COLS] = LAYOUT(
+    0x19, 0x18,   0x17, 0x16, 0x15, 0x14, 0x13, 0x12, 0x11, 0x99, 0x98, 0x97, 0x96, 0x95, 0x94,   0x93,   0x92, 0x91,
+    0x29, 0x28,    0x27,  0x26, 0x25, 0x24, 0x23, 0x22, 0x21, 0xA9, 0xA8, 0xA7, 0xA6, 0xA5, 0xA4, 0xA3,   0xA2, 0xA1,
+    0x39, 0x38,      0x37,  0x36, 0x35, 0x34, 0x33, 0x32, 0x31, 0xB9, 0xB8, 0xB7, 0xB6, 0xB5,     0xB3,
+    0x49, 0x48,    0x47,     0x45, 0x44, 0x43, 0x42, 0x41, 0xC9, 0xC8, 0xC7, 0xC6, 0xC5,          0xC4,   0xC2,
+    0x59, 0x58,   0x57,  0x56,  0x55,             0x51,                   0xD6, 0xE5, 0xE4,         0xE3, 0xE2, 0xE1
+);

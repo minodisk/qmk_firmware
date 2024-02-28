@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quick17_prefs.h"
+#include QMK_KEYBOARD_H
 
 bool _INPUT_JP;
 

@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega328p
+
+# Bootloader selection
+BOOTLOADER = usbasploader
+
 # Build Options
 #   change yes to no to disable
 #

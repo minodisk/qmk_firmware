@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 /* NB: Most configuration information resides in `info.json` */
 
@@ -10,8 +11,10 @@
  * RGB Matrix stuff
  * ---------------- */
 
+#define RGB_DI_PIN B7
+
 // RGB Matrix config
-#if defined(RGB_MATRIX_ENABLE)
+#if defined(RGB_DI_PIN) && defined(RGB_MATRIX_ENABLE)
 
     /* Denwir case is solid back. Please disable underglow at compile with compile command line:
      *
@@ -19,9 +22,9 @@
      *
      * */
     #ifndef ID63_DISABLE_UNDERGLOW
-        #define RGB_MATRIX_LED_COUNT 75
+        #define DRIVER_LED_TOTAL 75
     #else
-        #define RGB_MATRIX_LED_COUNT (75 - 12)
+        #define DRIVER_LED_TOTAL (75 - 12)
     #endif
 
     #define RGB_DISABLE_WHEN_USB_SUSPENDED     // turn off effects when suspended

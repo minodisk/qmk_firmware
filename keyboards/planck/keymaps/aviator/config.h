@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config_common.h"
 
 #ifndef KEYBOARD_planck_light
 #define BACKLIGHT_BREATHING

@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # Build Options
 #   change yes to no to disable
 #
@@ -6,3 +12,4 @@ EXTRAKEY_ENABLE = yes
 NKRO_ENABLE = yes
 LTO_ENABLE = yes
 RGBLIGHT_ENABLE = yes
+RGBLIGHT_DRIVER = WS2812

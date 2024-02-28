@@ -10,4 +10,5 @@ SRC +=  ./lib/rgb_state_reader.c \
 TAP_DANCE_ENABLE = yes
 EXTRAKEY_ENABLE = yes        # Audio control and System control
 OLED_ENABLE     = yes
+OLED_DRIVER     = SSD1306
 # LOCAL_GLCDFONT = yes

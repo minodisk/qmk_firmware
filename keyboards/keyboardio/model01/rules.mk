@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # Build Options
 #   change yes to no to disable
 #
@@ -15,3 +21,4 @@ SRC += leds.c \
 
 # You can set RGB_MATRIX_ENABLE = no in your rules.mk to disable this and save the Flash
 RGB_MATRIX_ENABLE = yes # Enable RGB matrix effects.
+RGB_MATRIX_DRIVER = custom

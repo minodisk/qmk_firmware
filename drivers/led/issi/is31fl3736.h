@@ -19,7 +19,6 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <string.h>
 #include "progmem.h"
 
 // Simple interface option.
@@ -29,8 +28,8 @@
 #    define DRIVER_COUNT 2
 #endif
 
-#ifndef RGB_MATRIX_LED_COUNT
-#    define RGB_MATRIX_LED_COUNT 96
+#ifndef DRIVER_LED_TOTAL
+#    define DRIVER_LED_TOTAL 96
 #endif
 
 typedef struct is31_led {
@@ -40,27 +39,27 @@ typedef struct is31_led {
     uint8_t b;
 } __attribute__((packed)) is31_led;
 
-extern const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT];
+extern const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL];
 
-void is31fl3736_init(uint8_t addr);
-void is31fl3736_write_register(uint8_t addr, uint8_t reg, uint8_t data);
-void is31fl3736_write_pwm_buffer(uint8_t addr, uint8_t *pwm_buffer);
+void IS31FL3736_init(uint8_t addr);
+void IS31FL3736_write_register(uint8_t addr, uint8_t reg, uint8_t data);
+void IS31FL3736_write_pwm_buffer(uint8_t addr, uint8_t *pwm_buffer);
 
-void is31fl3736_set_color(int index, uint8_t red, uint8_t green, uint8_t blue);
-void is31fl3736_set_color_all(uint8_t red, uint8_t green, uint8_t blue);
+void IS31FL3736_set_color(int index, uint8_t red, uint8_t green, uint8_t blue);
+void IS31FL3736_set_color_all(uint8_t red, uint8_t green, uint8_t blue);
 
-void is31fl3736_set_led_control_register(uint8_t index, bool red, bool green, bool blue);
+void IS31FL3736_set_led_control_register(uint8_t index, bool red, bool green, bool blue);
 
-void is31fl3736_mono_set_brightness(int index, uint8_t value);
-void is31fl3736_mono_set_brightness_all(uint8_t value);
-void is31fl3736_mono_set_led_control_register(uint8_t index, bool enabled);
+void IS31FL3736_mono_set_brightness(int index, uint8_t value);
+void IS31FL3736_mono_set_brightness_all(uint8_t value);
+void IS31FL3736_mono_set_led_control_register(uint8_t index, bool enabled);
 
 // This should not be called from an interrupt
 // (eg. from a timer interrupt).
 // Call this while idle (in between matrix scans).
 // If the buffer is dirty, it will update the driver with the buffer.
-void is31fl3736_update_pwm_buffers(uint8_t addr, uint8_t index);
-void is31fl3736_update_led_control_registers(uint8_t addr, uint8_t index);
+void IS31FL3736_update_pwm_buffers(uint8_t addr1, uint8_t addr2);
+void IS31FL3736_update_led_control_registers(uint8_t addr1, uint8_t addr2);
 
 #define PUR_0R 0x00   // No PUR resistor
 #define PUR_05KR 0x01 // 0.5k Ohm resistor

@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "prophet.h"
 
 void keyboard_pre_init_kb (void) {
   setPinOutput(B12);

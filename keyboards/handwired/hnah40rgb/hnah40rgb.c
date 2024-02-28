@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "hnah40rgb.h"
 #ifdef RGB_MATRIX_ENABLE
 #if defined (ansi)
 led_config_t g_led_config = { {

@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -18,3 +24,5 @@ CUSTOM_MATRIX = lite
 VPATH += drivers/gpio
 SRC += pca9555.c matrix.c
 QUANTUM_LIB_SRC += i2c_master.c
+
+LAYOUTS = 75_ansi 75_iso

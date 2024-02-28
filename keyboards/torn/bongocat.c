@@ -14,9 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "torn.h"
+#include QMK_KEYBOARD_H
 
 #ifdef OLED_ENABLE
+
+#define ARRAY_SIZE(array) (sizeof(array) / sizeof(array[0]))
 
 #define IDLE_SPEED 20 // idle below this wpm
 #define TAP_SPEED 60 // tap above this wpm

@@ -1,3 +1,9 @@
+# MCU name
+MCU = STM32F103
+
+# Bootloader selection
+BOOTLOADER = stm32duino
+
 # Build Options
 #   change yes to no to disable
 #
@@ -13,6 +19,9 @@ AUDIO_ENABLE = no           # Audio output
 
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = usart
+WS2812_DRIVER = pwm
+
+LAYOUTS = ortho_4x12
 
 # Disable unsupported hardware
 AUDIO_SUPPORTED = no

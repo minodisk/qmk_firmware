@@ -4,7 +4,7 @@
 
 WT70-JB is a keyboard PCB supporting TKL without F-row layout.
 
-* Keyboard Maintainer: [Wilba](https://github.com/wilba)
+* Keyboard Maintainer: [Wilba6582](https://github.com/Wilba6582)
 * Hardware Supported: wilba.tech WT70-JB
 * Hardware Availability: [wilba.tech](https://wilba.tech/)
 

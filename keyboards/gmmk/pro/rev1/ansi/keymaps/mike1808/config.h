@@ -14,11 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define COMBO_COUNT 1
 #define COMBO_TERM 100
 
 #define RGB_MATRIX_KEYPRESSES
 #define RGB_DISABLE_WHEN_USB_SUSPENDED
-#define RGB_MATRIX_TIMEOUT 90000
+#define RGB_DISABLE_TIMEOUT 90000
 
 #define MACRO_TIMER 5
 

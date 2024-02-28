@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # Build Options
 #   change yes to no to disable
 #
@@ -13,3 +19,5 @@ RGBLIGHT_ENABLE = no       # Enable keyboard RGB underglow
 AUDIO_ENABLE = no          # Audio output
 LTO_ENABLE = yes           # Enables Link Time Optimization (LTO) which reduces the compiled size
 OLED_ENABLE = yes          # Enables the use of OLED displays
+OLED_DRIVER = SSD1306      # Enables the use of OLED displays
+

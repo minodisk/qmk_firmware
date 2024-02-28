@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -14,5 +20,6 @@ AUDIO_ENABLE = no              # Audio output
 
 NO_USB_STARTUP_CHECK = no      # Disable initialization only when usb is plugged in
 RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = IS31FL3731
 
 RGB_MATRIX_SUPPORTED = yes

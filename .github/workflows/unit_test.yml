@@ -1,8 +1,5 @@
 name: Unit Tests
 
-permissions:
-  contents: read
-
 on:
   push:
     branches:
@@ -23,7 +20,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    container: ghcr.io/qmk/qmk_cli
+    container: qmkfm/qmk_cli
 
     steps:
     - uses: actions/checkout@v3

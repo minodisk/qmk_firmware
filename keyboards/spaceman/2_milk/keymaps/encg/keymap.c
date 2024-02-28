@@ -38,7 +38,7 @@ enum unicode_names {
     WAVE
 };
 
-const uint32_t unicode_map[] PROGMEM = {
+const uint32_t PROGMEM unicode_map[] = {
     [COW]   = 0x1F404,  // 🐄
     [BTTR]  = 0x1F9C8,  // 🧈
     [CHIKN] = 0x1F414,  // 🐔

@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "gamenum.h"
 
 void matrix_init_kb(void) {
 	// put your keyboard start-up code here

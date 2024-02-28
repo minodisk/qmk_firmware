@@ -1,5 +1,11 @@
+# MCU name
+MCU = at90usb646
+
 # Processor frequency
 F_CPU = 8000000
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
 
 # Build Options
 #   change yes to no to disable

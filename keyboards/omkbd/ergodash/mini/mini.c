@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "ergodash.h"
 
 #ifdef AUDIO_ENABLE
     float tone_startup[][2] = SONG(STARTUP_SOUND);

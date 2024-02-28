@@ -1,3 +1,10 @@
+# MCU name
+MCU = STM32F401
+BOARD = BLACKPILL_STM32_F401
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -12,6 +19,7 @@ RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes        # Encoder Enabled
 OLED_ENABLE = yes           # OLED Enabled
+OLED_DRIVER = SSD1306       # OLED Driver
 DIP_SWITCH_ENABLE = yes     # Dip Switch Enabled
 
 POINTING_DEVICE_ENABLE = yes                    # Pointing Device Enabled

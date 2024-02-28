@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "tractyl_manuform.h"
+#include "5x6_right.h"
 
 #ifdef SWAP_HANDS_ENABLE
 const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {

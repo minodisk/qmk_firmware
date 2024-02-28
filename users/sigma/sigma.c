@@ -67,13 +67,13 @@ void set_os(uint8_t os) {
 #if defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE) || defined(UCIS_ENABLE)
   switch (os) {
   case _OS_MACOS:
-    set_unicode_input_mode(UNICODE_MODE_MACOS);
+    set_unicode_input_mode(UC_OSX);
     break;
   case _OS_LINUX:
-    set_unicode_input_mode(UNICODE_MODE_LINUX);
+    set_unicode_input_mode(UC_LNX);
     break;
   case _OS_WINDOWS:
-    set_unicode_input_mode(UNICODE_MODE_WINDOWS);
+    set_unicode_input_mode(UC_WIN);
     break;
   }
 #endif
@@ -90,19 +90,26 @@ void store_userspace_config(void) {
   eeconfig_update_user(stored_userspace_config.raw);
 }
 
-void leader_end_user(void) {
-  if (leader_sequence_two_keys(KC_F1, KC_L)) {
-    set_os(_OS_LINUX);
-  }
-  if (leader_sequence_two_keys(KC_F1, KC_M)) {
-    set_os(_OS_MACOS);
-  }
-  if (leader_sequence_two_keys(KC_F1, KC_W)) {
-    set_os(_OS_WINDOWS);
-  }
-  if (leader_sequence_two_keys(KC_F1, KC_S)) {
-    stored_userspace_config.raw = runtime_userspace_config.raw;
-    store_userspace_config();
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_TWO_KEYS(KC_F1, KC_L) {
+      set_os(_OS_LINUX);
+    }
+    SEQ_TWO_KEYS(KC_F1, KC_M) {
+      set_os(_OS_MACOS);
+    }
+    SEQ_TWO_KEYS(KC_F1, KC_W) {
+      set_os(_OS_WINDOWS);
+    }
+    SEQ_TWO_KEYS(KC_F1, KC_S) {
+      stored_userspace_config.raw = runtime_userspace_config.raw;
+      store_userspace_config();
+    }
   }
 }
 
@@ -165,7 +172,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     default:
       if (pressed)
-        SEND_STRING(SS_LCTL("x"));
+        SEND_STRING(SS_LCTRL("x"));
       break;
     }
     break;
@@ -183,7 +190,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     default:
       if (pressed)
-        SEND_STRING(SS_LCTL("c"));
+        SEND_STRING(SS_LCTRL("c"));
       break;
     }
     break;
@@ -201,7 +208,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     default:
       if (pressed)
-        SEND_STRING(SS_LCTL("v"));
+        SEND_STRING(SS_LCTRL("v"));
       break;
     }
     break;
@@ -219,7 +226,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     default:
       if (pressed)
-        SEND_STRING(SS_LCTL("z"));
+        SEND_STRING(SS_LCTRL("z"));
       break;
     }
     break;
@@ -237,7 +244,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     default:
       if (pressed)
-        SEND_STRING(SS_LCTL(SS_LSFT("z")));
+        SEND_STRING(SS_LCTRL(SS_LSFT("z")));
       break;
     }
     break;
@@ -246,7 +253,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (os_target) {
     case _OS_MACOS:
       if (pressed)
-        SEND_STRING(SS_LGUI(SS_LCTL("q")));
+        SEND_STRING(SS_LGUI(SS_LCTRL("q")));
       break;
     case _OS_LINUX:
       pressed ?

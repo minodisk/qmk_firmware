@@ -14,7 +14,7 @@ endif
 
 
 ifeq ($(strip $(LEADER_ENABLE)), yes)
-     SRC += leader_user.c
+     SRC += leader.c
 endif
 
 

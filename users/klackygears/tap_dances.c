@@ -1,48 +1,48 @@
 #include "tap_dances.h"
 
 /*
-void macroTogKey(tap_dance_state_t *state, void *user_data) {
+void macroTogKey(qk_tap_dance_state_t *state, void *user_data) {
   keyrecord_t kr;
 
   if (state->count == 1)
   {
     kr.event.pressed = false;
-    process_record_dynamic_macro( DM_PLY1, &kr );
+    process_record_dynamic_macro( DYN_MACRO_PLAY1, &kr );
   }
   else if (state->count == 2)
   {
     kr.event.pressed = true;
-    process_record_dynamic_macro( DM_RSTP, &kr );
+    process_record_dynamic_macro( DYN_REC_STOP, &kr );
   }
   else if (state->count == 3)
   {
     kr.event.pressed = false;
-    process_record_dynamic_macro( QK_DYNAMIC_MACRO_RECORD_START_1, &kr );
+    process_record_dynamic_macro( DYN_REC_START1, &kr );
   }
 }
 
-void macroTogKey2(tap_dance_state_t *state, void *user_data) {
+void macroTogKey2(qk_tap_dance_state_t *state, void *user_data) {
   keyrecord_t kr;
 
   if (state->count == 1)
   {
     kr.event.pressed = false;
-    process_record_dynamic_macro( DM_PLY2, &kr );
+    process_record_dynamic_macro( DYN_MACRO_PLAY2, &kr );
   }
   else if (state->count == 2)
   {
     kr.event.pressed = true;
-    process_record_dynamic_macro( DM_RSTP, &kr );
+    process_record_dynamic_macro( DYN_REC_STOP, &kr );
   }
   else if (state->count == 3)
   {
     kr.event.pressed = false;
-    process_record_dynamic_macro( DM_REC2, &kr );
+    process_record_dynamic_macro( DYN_REC_START2, &kr );
   }
 }
 */
 
-void pstinsrt(tap_dance_state_t *state, void *user_data) {
+void pstinsrt(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         register_code(KC_LALT);
         tap_code(KC_I);
@@ -54,7 +54,7 @@ void pstinsrt(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void ccopy(tap_dance_state_t *state, void *user_data) {
+void ccopy(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(C(KC_X));
 
@@ -65,7 +65,7 @@ void ccopy(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void pstspecial(tap_dance_state_t *state, void *user_data) {
+void pstspecial(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         register_code(KC_LALT);
         tap_code(KC_E);
@@ -82,7 +82,7 @@ void pstspecial(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void deldel(tap_dance_state_t *state, void *user_data) {
+void deldel(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         register_code(KC_LALT);
         tap_code(KC_E);
@@ -94,7 +94,7 @@ void deldel(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void findreplace(tap_dance_state_t *state, void *user_data) {
+void findreplace(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(C(KC_H));
     } else {
@@ -103,7 +103,7 @@ void findreplace(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void cyclawin(tap_dance_state_t *state, void *user_data) {
+void cyclawin(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(C(S(KC_F6)));
     } else {
@@ -112,7 +112,7 @@ void cyclawin(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void SCRNSNP(tap_dance_state_t *state, void *user_data) {
+void SCRNSNP(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(A(KC_PSCR));
     } else {
@@ -124,7 +124,7 @@ void SCRNSNP(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void mcccpy(tap_dance_state_t *state, void *user_data) {
+void mcccpy(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(G(KC_X));
     } else {
@@ -133,7 +133,7 @@ void mcccpy(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void mcpstin(tap_dance_state_t *state, void *user_data) {
+void mcpstin(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(G(KC_I));
     } else {
@@ -142,7 +142,7 @@ void mcpstin(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void enttab(tap_dance_state_t *state, void *user_data) {
+void enttab(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code(KC_ENT);
     } else {
@@ -151,7 +151,7 @@ void enttab(tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 
-void rgb_toggle(tap_dance_state_t *state, void *user_data) {
+void rgb_toggle(qk_tap_dance_state_t *state, void *user_data) {
 #ifdef RGBLIGHT_ENABLE
     if (state->count == 1) {
         rgblight_step();
@@ -162,7 +162,7 @@ void rgb_toggle(tap_dance_state_t *state, void *user_data) {
 }
 
 // Tap Dance Definitions
-tap_dance_action_t tap_dance_actions[] = {
+qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_PSTI] = ACTION_TAP_DANCE_FN(pstinsrt),
     [TD_PTSP] = ACTION_TAP_DANCE_FN(pstspecial),
     [TD_FNDR] = ACTION_TAP_DANCE_FN(findreplace),

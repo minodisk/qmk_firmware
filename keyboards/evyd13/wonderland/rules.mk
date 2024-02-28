@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = qmk-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -12,3 +18,5 @@ BACKLIGHT_ENABLE = no  # Enable keyboard backlight functionality
 AUDIO_ENABLE = no
 AUTO_SHIFT_ENABLE = no
 VELOCIKEY_ENABLE = yes
+
+LAYOUTS = alice alice_split_bs

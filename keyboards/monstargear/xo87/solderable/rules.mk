@@ -1,3 +1,9 @@
+# MCU name
+MCU = at90usb646
+
+# Bootloader selection
+BOOTLOADER = lufa-dfu
+
 # Build Options
 #  change yes to no to disable
 #
@@ -10,3 +16,4 @@ NKRO_ENABLE = yes           # Enable N-Key Rollover
 BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
+BACKLIGHT_DRIVER = custom

@@ -63,7 +63,7 @@ void oled_render_keylog(void) {
     oled_write((const char *)&logged_char, false);
 }
 
-void render_master_oled(void) {
+void render_master_oled() {
     if (timer_elapsed32(oled_timer) > CUSTOM_OLED_TIMEOUT) {
         oled_off();
         return;

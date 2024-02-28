@@ -1,5 +1,11 @@
+# MCU name
+MCU = atmega32a
+
 # Processor frequency
 F_CPU = 16000000
+
+# Bootloader selection
+BOOTLOADER = usbasploader
 
 # Build Options
 #   change yes to no to disable
@@ -15,6 +21,7 @@ RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 UNICODE_ENABLE = yes
 OLED_ENABLE = yes
+OLED_DRIVER = SSD1306
 ENCODER_ENABLE = yes
 WPM_ENABLE = yes
 LTO_ENABLE = no

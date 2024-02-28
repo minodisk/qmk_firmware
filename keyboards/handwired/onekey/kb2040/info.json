@@ -5,8 +5,7 @@
         "cols": ["GP4"],
         "rows": ["GP5"]
     },
-    "ws2812": {
-        "pin": "GP17",
-        "driver": "vendor"
+    "rgblight": {
+        "pin": "A1"
     }
 }

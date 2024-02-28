@@ -15,6 +15,7 @@
  */
 #pragma once
 
+#include "config_common.h"
 
 /* Used to set host for remote KB if VUSB detect doesn't work. */
 // #define KEYBOARD_HOST // Force host mode
@@ -28,6 +29,9 @@
 #define MATRIX_COLS 16
 #define MATRIX_MUX_COLS 4
 
+/* Set 0 if debouncing isn't needed */
+#define DEBOUNCE 10
+
 /*
  * Keyboard Matrix Assignments
  * The nibble uses a demultiplexer for the cols.
@@ -37,3 +41,13 @@
 #define MATRIX_ROW_PINS { B1, B3, B2, B6, D4 }
 #define MATRIX_COL_MUX_PINS { F4, F5, F6, F7 }
 #define MATRIX_COL_PINS { }
+
+/* Optional SMT LED pins */
+#define RGB_DI_PIN E6
+#define RGBLED_NUM 10
+#define RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_SLEEP
+
+/* Optional encoder pins */
+#define ENCODERS_PAD_A { B5 }
+#define ENCODERS_PAD_B { B4 }

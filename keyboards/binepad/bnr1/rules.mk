@@ -1,3 +1,3 @@
-# This file is mostly left blank
+# This file intentionally left blank
 
-DEFAULT_FOLDER = binepad/bnr1/v2
+DEFAULT_FOLDER = binepad/bnr1/v1

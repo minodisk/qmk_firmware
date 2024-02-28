@@ -16,6 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #pragma once
 
+#include "config_common.h"
 
 #define MATRIX_ROWS 14
 #define MATRIX_ROWS_PER_SIDE (MATRIX_ROWS / 2)

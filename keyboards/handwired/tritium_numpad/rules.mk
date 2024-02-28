@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # Build Options
 #   change yes to no to disable
 #
@@ -10,3 +16,5 @@ NKRO_ENABLE = yes           # Enable N-Key Rollover
 RGBLIGHT_ENABLE = no   # Enable keyboard underlight functionality
 BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
 AUDIO_ENABLE = no
+
+LAYOUTS = numpad_6x4 ortho_6x4

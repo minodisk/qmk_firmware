@@ -37,6 +37,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USB_MAX_POWER_CONSUMPTION 50
 
+/* Use I2C or Serial, not both */
+
+#define USE_SERIAL
+// #define USE_I2C
+
 /* Select hand configuration */
 
 /* #define MASTER_LEFT */
@@ -45,7 +50,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* ws2812 RGB LED */
 #undef RGBLED_NUM
-#define WS2812_DI_PIN D3
+#define RGB_DI_PIN D3
 
 #define RGBLED_NUM 50
 #endif

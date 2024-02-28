@@ -85,18 +85,24 @@ void matrix_init_user(void) {
   writePinLow(B3);
 }
 
-bool led_update_user(led_t led_state) {
-  if (led_state.num_lock) {
+void led_set_user(uint8_t usb_led) {
+  if (IS_LED_ON(usb_led, USB_LED_NUM_LOCK)) {
     writePinHigh(B2);
   } else {
     writePinLow(B2);
   }
-  if (led_state.caps_lock) {
+  if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
     writePinHigh(B1);
   } else {
     writePinLow(B1);
   }
-  return false;
+/*
+  if (IS_LED_ON(usb_led, USB_LED_SCROLL_LOCK)) {
+    writePinHigh(B3);
+  } else {
+    writePinLow(B3);
+  }*/
+
 }
 
 //function for layer indicator LED

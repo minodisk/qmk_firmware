@@ -25,10 +25,13 @@ NKRO_ENABLE = no            # Enable N-Key Rollover
 NO_USB_STARTUP_CHECK = yes	# Disable initialization only when usb is plugged in
 
 RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = IS31FL3731
 
 RGBLIGHT_ENABLE = yes
-WS2812_DRIVER_REQUIRED = yes
+RGBLIGHT_CUSTOM_DRIVER = yes
 
 CUSTOM_MATRIX = yes
 # project specific files
-SRC += matrix.c
+SRC += ws2812.c matrix.c
+
+LAYOUTS = 65_iso_blocker

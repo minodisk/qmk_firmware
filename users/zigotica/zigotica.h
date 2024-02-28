@@ -16,7 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "rows.h"
 
-#if defined(SPLIT_KEYBOARD) || defined(ORTHOLINEAR_KEYBOARD)
+#ifdef SPLIT_KEYBOARD
 enum userspace_layers {
     BASE = 0,
     _NUM,

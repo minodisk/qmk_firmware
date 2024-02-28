@@ -54,6 +54,16 @@ static matrix_row_t matrix[MATRIX_ROWS];
 int8_t encoderValue = 0;
 
 __attribute__ ((weak))
+void matrix_init_quantum(void) {
+    matrix_init_kb();
+}
+
+__attribute__ ((weak))
+void matrix_scan_quantum(void) {
+    matrix_scan_kb();
+}
+
+__attribute__ ((weak))
 void matrix_init_kb(void) {
     matrix_init_user();
 }
@@ -83,7 +93,7 @@ uint8_t matrix_cols(void) {
 
 void matrix_init(void) {
 
-    matrix_init_kb();
+    matrix_init_quantum();
     uart_init(1000000);
 }
 
@@ -158,7 +168,7 @@ uint8_t matrix_scan(void)
         xprintf("\r\nRequested packet, data 3 was %d",uart_data[3]);
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
     return 1;
 }
 

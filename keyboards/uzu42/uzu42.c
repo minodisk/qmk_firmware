@@ -1,7 +1,7 @@
 // Copyright 2022 QMK
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "quantum.h"
+#include "uzu42.h"
 
 #ifdef OLED_ENABLE
 #include <stdio.h>

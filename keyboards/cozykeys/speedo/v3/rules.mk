@@ -1,4 +1,8 @@
-PIN_COMPATIBLE = elite_c
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
 
 # Build Options
 #   change yes to no to disable

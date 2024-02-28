@@ -18,7 +18,7 @@
 
 /* Select hand configuration */
 
-#define QUICK_TAP_TERM 0
+#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 180
 
 #define OLED_FONT_H "keyboards/getta25/keymaps/oled/glcdfont.c"

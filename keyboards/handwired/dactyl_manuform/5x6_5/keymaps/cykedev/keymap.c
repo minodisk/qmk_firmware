@@ -195,18 +195,18 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case SPC_L:
-      return true;
+      return false;
    case SPC_R:
-      return false;
+      return true;
    case ENT_L:
-      return true;
-   case ENT_R:
-      return true;
-    default:
       return false;
+   case ENT_R:
+      return false;
+    default:
+      return true;
   }
 }
 

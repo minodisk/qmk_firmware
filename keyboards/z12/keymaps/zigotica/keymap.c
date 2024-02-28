@@ -38,10 +38,9 @@ void raw_hid_receive(uint8_t* data, uint8_t length) {
 
 enum custom_keycodes {
     VIM_SIF = SAFE_RANGE,
-    VIM_FORMAT,
-    VIM_GODEF,
-    VIM_RENSYM,
-    VIM_CODEACT,
+    VIM_SIP,
+    VIM_RIF,
+    VIM_RIP,
     VIM_NEW
 };
 
@@ -50,45 +49,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case VIM_SIF:// Search in File
             if (record->event.pressed) {
                 register_code(KC_ESC);
-                tap_code(KC_SPACE);
-                tap_code(KC_S);
-                tap_code(KC_C);
+                tap_code(KC_SLASH);
             } else { // released
                 unregister_code(KC_ESC);
             }
         break;
-        case VIM_FORMAT:// Autoformat file
+        case VIM_SIP:// Search in Project
             if (record->event.pressed) {
                 register_code(KC_ESC);
-                tap_code(KC_F9);
+                SEND_STRING(":Ag ");
             } else { // released
                 unregister_code(KC_ESC);
             }
         break;
-        case VIM_GODEF:// Go to Definition
+        case VIM_RIF:// Replace in File
             if (record->event.pressed) {
                 register_code(KC_ESC);
-                tap_code(KC_G);
-                tap_code(KC_D);
+                SEND_STRING(":%s/a/b/g");
             } else { // released
                 unregister_code(KC_ESC);
             }
         break;
-        case VIM_CODEACT:// Code actions
+        case VIM_RIP:// Replace in Project
             if (record->event.pressed) {
                 register_code(KC_ESC);
-                tap_code(KC_SPACE);
-                tap_code(KC_C);
-                tap_code(KC_A);
-            } else { // released
-                unregister_code(KC_ESC);
-            }
-        break;
-        case VIM_RENSYM:// Rename symbol
-            if (record->event.pressed) {
-                register_code(KC_ESC);
-                tap_code(KC_SPACE);
-                tap_code(KC_R);
+                SEND_STRING(":cdo %s/a/b/g");
             } else { // released
                 unregister_code(KC_ESC);
             }
@@ -175,15 +160,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |BUFFER | BROW |  VIM | SCROLL|
  * |-------+------+------+-------|
  *    |-------+-------+-------|
- *    |SRCH FL| FORMAT|NEW BUF|
+ *    |SRCH FL|REPL FL|NEW BUF|
  *    |-------+-------+-------|
- *    |REN SYM|GO DEF |CODEACT|
+ *    |SRCH PR|REPL PR|   o   |
  *    |-------+-------+-------|
  */
     [_VIM] = LAYOUT(
              _______, _______,
     _______, _______, _______,  _______,
-    VIM_SIF,    VIM_FORMAT,     VIM_NEW,
-    VIM_RENSYM, VIM_GODEF,      VIM_CODEACT
+    VIM_SIF,      VIM_RIF,      VIM_NEW,
+    VIM_SIP,      VIM_RIP,      _______
     ),
 };

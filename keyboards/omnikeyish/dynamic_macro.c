@@ -1,4 +1,4 @@
-#include "omnikeyish.h"
+#include QMK_KEYBOARD_H
 #include <string.h>
 
 dynamic_macro_t dynamic_macros[DYNAMIC_MACRO_COUNT];

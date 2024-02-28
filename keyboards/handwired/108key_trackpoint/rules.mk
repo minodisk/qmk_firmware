@@ -1,3 +1,9 @@
+# MCU name
+MCU = at90usb1286
+
+# Bootloader selection
+BOOTLOADER = halfkay
+
 # Build Options
 #   change yes to no to disable
 #
@@ -11,5 +17,4 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 PS2_MOUSE_ENABLE = yes
-PS2_ENABLE = yes
-PS2_DRIVER = usart
+PS2_USE_USART = yes

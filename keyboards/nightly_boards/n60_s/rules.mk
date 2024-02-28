@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -12,3 +18,6 @@ RGBLIGHT_ENABLE = yes         # Enable keyboard RGB underglow
 AUDIO_ENABLE = yes            # Audio output
 ENCODER_ENABLE = yes          # Enable Rotary Encoders
 LTO_ENABLE = yes
+
+# Added encoder Action
+SRC += encoder_action.c

@@ -24,7 +24,7 @@ bool tempOff = false;
 
 
 
-void initStringData(void)
+void initStringData()
 {
   if (macroTaps == 0)
   {
@@ -382,7 +382,7 @@ bool processSmartMacroTap(uint16_t kc)
 
 
 bool shifted = false;
-bool isShifted(void)
+bool isShifted()
 {
   return shifted;
 }
@@ -400,8 +400,8 @@ bool storeShiftState(uint16_t keycode, keyrecord_t *record)
   {
     switch (keycode)
     {
-      case SC_LSPO:
-      case SC_RSPC:
+      case KC_LSPO:
+      case KC_RSPC:
         shifted = true;
     }
   }
@@ -410,8 +410,8 @@ bool storeShiftState(uint16_t keycode, keyrecord_t *record)
     switch (keycode)
     {
 
-      case SC_LSPO:
-      case SC_RSPC:
+      case KC_LSPO:
+      case KC_RSPC:
         shifted = false;
         return true;
     }

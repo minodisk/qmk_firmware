@@ -19,11 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "gpio.h"
-
-/* diode directions */
-#define COL2ROW 0
-#define ROW2COL 1
 
 #if (MATRIX_COLS <= 8)
 typedef uint8_t matrix_row_t;
@@ -51,8 +46,6 @@ void matrix_setup(void);
 void matrix_init(void);
 /* scan all key states on matrix */
 uint8_t matrix_scan(void);
-/* whether matrix scanning operations should be executed */
-bool matrix_can_read(void);
 /* whether a switch is on */
 bool matrix_is_on(uint8_t row, uint8_t col);
 /* matrix state on row */
@@ -68,6 +61,10 @@ void matrix_io_delay(void);
 /* power control */
 void matrix_power_up(void);
 void matrix_power_down(void);
+
+/* executes code for Quantum */
+void matrix_init_quantum(void);
+void matrix_scan_quantum(void);
 
 void matrix_init_kb(void);
 void matrix_scan_kb(void);

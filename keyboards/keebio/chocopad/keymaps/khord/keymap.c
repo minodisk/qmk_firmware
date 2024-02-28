@@ -1,4 +1,4 @@
-#include QMK_KEYBOARD_H
+#include "chocopad.h"
 
 #define _BASE 0
 #define _FN1 1

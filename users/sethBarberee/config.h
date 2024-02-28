@@ -28,6 +28,9 @@
 #    endif
 
 // Trim animations I don't use/like
+#    ifdef RGBLIGHT_ANIMATIONS
+#        undef RGBLIGHT_ANIMATIONS
+#    endif
 #    ifndef RGBLIGHT_EFFECT_BREATHING
 #        define RGBLIGHT_EFFECT_BREATHING
 #    endif

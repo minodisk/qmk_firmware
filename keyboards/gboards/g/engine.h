@@ -10,12 +10,18 @@
         crap is removed where possible
 */
 
+#include QMK_KEYBOARD_H
 #pragma once
-
-#include "quantum.h"
+#include "keymap.h"
 #include <string.h>
+#include <stdint.h>
 #include <stdio.h>
 #include "config_engine.h"
+#include <avr/pgmspace.h>
+#include "wait.h"
+#ifdef MOUSEKEY_ENABLE
+#    include "mousekey.h"
+#endif
 
 // Set defaults
 #ifndef IN_CHORD_MASK

@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "quantum.h"
+#include "hannah910.h"
 
 void led_init_ports(void) {
   setPinOutput(B2);
@@ -22,13 +22,13 @@ void led_init_ports(void) {
   setPinOutput(D2);
 
 }
-
-bool led_update_kb(led_t led_state) {
-    bool res = led_update_user(led_state);
-    if(res) {
-        writePin(B2, led_state.caps_lock);
-    }
-    return res;
+void led_set_kb(uint8_t usb_led) {
+  if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
+    writePinHigh(B2);
+  } else {
+    writePinLow(B2);
+  }
+      led_set_user(usb_led);
 }
 
 layer_state_t layer_state_set_user(layer_state_t state)

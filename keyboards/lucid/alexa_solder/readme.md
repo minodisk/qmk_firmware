@@ -1,12 +1,8 @@
 # Alexa Solder PCB by Lucid
 
 The following is the QMK Firmware for the Alexa *Solder* PCB for [MakerKeyboards](http://www.makerkeyboards.com).
-
-* Keyboard Maintainer: [mrnoisytiger](https://github.com/mrnoisytiger)
+* Keyboard Maintainer: Lucid
 * Hardware Supported: Alexa
-* Hardware Availability: [Maker Keyboards](https://www.makerkeyboards.com/products/alexa)
-  * [Full Kit](https://www.makerkeyboards.com/products/alexa)
-  * [Extra Parts](https://www.makerkeyboards.com/products/alexa-extras)
 
 Make example for this keyboard (after setting up your build environment):
 

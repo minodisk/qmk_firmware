@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "quantum.h"
+#include "rev_a.h"
 
 #define CAPS_PIN B5
 #define SCROLL_PIN B6

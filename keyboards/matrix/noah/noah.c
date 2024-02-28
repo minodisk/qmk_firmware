@@ -2,7 +2,7 @@
  * noah.c
  */
 
-#include "quantum.h"
+#include "noah.h"
 
 void bootloader_jump(void) {
     // This board doesn't use the standard DFU bootloader, and no information is available regarding how to enter bootloader mode. All we can do here is reset.
@@ -32,14 +32,14 @@ void rgblight_set(void) {
         }
     }
     if (noah_led_mode) {
-      led_t led_state = host_keyboard_led_state();
-      if (led_state.caps_lock) {
+      uint8_t ind_led = host_keyboard_leds();
+      if (IS_LED_ON(ind_led, USB_LED_CAPS_LOCK)) {
         noah_leds[0] = led[0];
       }
-      if (led_state.scroll_lock) {
+      if (IS_LED_ON(ind_led, USB_LED_SCROLL_LOCK)) {
         noah_leds[1] = led[1];
       }
-      if (led_state.num_lock) {
+      if (IS_LED_ON(ind_led, USB_LED_NUM_LOCK)) {
         noah_leds[2] = led[2];
       }
       for (int32_t i = 0; i < 4; i++) {
@@ -63,7 +63,7 @@ void matrix_scan_kb(void) {
 }
 
 #ifdef RGB_MATRIX_ENABLE
-const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT] = {
+const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
 /* Refer to IS31 manual for these locations
  *   driver
  *   |  R location

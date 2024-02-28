@@ -23,7 +23,7 @@ void led_on(void) {
 
 void led_off(void) { writePinLow(D2); }
 
-void keyboard_post_init_kb(void) {
+void keyboard_post_init_kb() {
     led_on();
 
     keyboard_post_init_user();

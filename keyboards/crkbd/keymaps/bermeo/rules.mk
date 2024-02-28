@@ -3,6 +3,7 @@ RGB_MATRIX_ENABLE  = yes
 MOUSEKEY_ENABLE    = no
 NKRO_ENABLE        = no
 OLED_ENABLE        = yes
+OLED_DRIVER        = SSD1306
 LTO_ENABLE         = yes
 SLEEP_LED_ENABLE   = yes
 WPM_ENABLE         = yes

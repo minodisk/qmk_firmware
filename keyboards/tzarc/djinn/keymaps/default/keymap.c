@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_LEFT, KC_DOWN, KC_RIGHT,_______,   _______, _______,                             _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,   _______, _______,                             _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______,   _______, _______,                             _______, _______, _______, _______,
-                                                                      BL_DOWN,               BL_UP, 
+                                                                      BL_DEC,                BL_INC,
                                                      _______,                                               _______,
                                             _______,   _______, _______,                             _______, _______, _______,
                                                      _______,                                               _______
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______,                                               _______
     ),
     [_ADJUST] = LAYOUT_all(
-        _______, KC_CAPS, KC_NUM,  KC_SCRL, _______,   _______, _______,                             _______, _______, _______, _______, DB_TOGG, EE_CLR,  QK_BOOT,
+        _______, KC_CLCK, KC_NLCK, KC_SLCK, _______,   _______, _______,                             _______, _______, _______, _______, DEBUG,   EEP_RST, QK_BOOT,
         _______, _______, _______, _______, _______,   _______, _______,                             _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,   _______, _______,                             _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,   _______, _______,                             _______, _______, _______, _______, _______, _______, _______,
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Encoder map
 
 // clang-format off
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_QWERTY] = { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
     [_LOWER]  = { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),           ENCODER_CCW_CW(RGB_SAD, RGB_SAI)  },
     [_RAISE]  = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI),           ENCODER_CCW_CW(RGB_SPD, RGB_SPI)  },

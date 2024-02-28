@@ -5,7 +5,7 @@ ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-	INTROSPECTION_KEYMAP_C = combos.c
+    SRC += combos.c
 endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)

@@ -21,6 +21,12 @@
 #include "musical_notes.h"
 #include "song_list.h"
 #include "voices.h"
+#include "quantum.h"
+#include <math.h>
+
+#if defined(__AVR__)
+#    include <avr/io.h>
+#endif
 
 #if defined(AUDIO_DRIVER_PWM)
 #    include "audio_pwm.h"
@@ -37,7 +43,10 @@ typedef union {
     };
 } audio_config_t;
 
-_Static_assert(sizeof(audio_config_t) == sizeof(uint8_t), "Audio EECONFIG out of spec.");
+// AVR/LUFA has a MIN, arm/chibios does not
+#ifndef MIN
+#    define MIN(a, b) (((a) < (b)) ? (a) : (b))
+#endif
 
 /*
  * a 'musical note' is represented by pitch and duration; a 'musical tone' adds intensity and timbre
@@ -53,11 +62,6 @@ typedef struct {
 } musical_tone_t;
 
 // public interface
-
-/**
- * @brief Save the current choices to the eeprom
- */
-void eeconfig_update_audio_current(void);
 
 /**
  * @brief one-time initialization called by quantum/quantum.c
@@ -274,6 +278,3 @@ bool audio_update_state(void);
 #define increase_tempo(t) audio_increase_tempo(t)
 #define decrease_tempo(t) audio_decrease_tempo(t)
 // vibrato functions are not used in any keyboards
-
-void audio_on_user(void);
-void audio_off_user(void);

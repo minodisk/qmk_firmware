@@ -16,11 +16,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "config_common.h"
 
 #define MASTER_RIGHT
 
 // these should work better for homerow modifiers
 #define TAPPING_TERM 350
 #define PERMISSIVE_HOLD
-#define QUICK_TAP_TERM 0
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_FORCE_HOLD
 

@@ -26,10 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "util.h"
 #include "matrix.h"
 
-#ifndef DEBOUNCE
-#    define DEBOUNCE 5
-#endif
-
 static uint8_t debouncing = DEBOUNCE;
 static matrix_row_t matrix[MATRIX_ROWS];
 static matrix_row_t matrix_debouncing[MATRIX_ROWS];
@@ -80,7 +76,7 @@ void matrix_init(void)
 		matrix_debouncing[i] = 0;
 	}
 
-	matrix_init_kb();
+	matrix_init_quantum();
 }
 
 uint8_t matrix_scan(void)
@@ -109,7 +105,7 @@ uint8_t matrix_scan(void)
 		}
 	}
 
-	matrix_scan_kb();
+	matrix_scan_quantum();
 
 	return 1;
 }

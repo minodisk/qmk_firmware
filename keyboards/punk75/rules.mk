@@ -1,5 +1,11 @@
+# MCU name
+MCU = atmega32a
+
 # Processor frequency
 F_CPU = 16000000
+
+# Bootloader selection
+BOOTLOADER = usbasploader
 
 # Build Options
 #   change yes to no to disable
@@ -14,3 +20,5 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes        # Enable rotary encoders support
+
+LAYOUTS = ortho_5x15

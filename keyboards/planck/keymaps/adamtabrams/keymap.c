@@ -200,8 +200,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_FMWARE] = LAYOUT_planck_grid(
-    XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, QK_BOOT, DB_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, EEP_RST, QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, QK_BOOT, DEBUG,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______
 )
@@ -229,7 +229,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SHFTESC:
         case NUMSPAC:
@@ -249,13 +249,13 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case CTL__J:
         case CTL__T:
         case CTL__N:
-            return 0;
+            return true;
         default:
-            return QUICK_TAP_TERM;
+            return false;
     }
 }
 
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case ALT__A:
         case ALTSCLN:
@@ -272,7 +272,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case CTL__J:
         case CTL__T:
         case CTL__N:
-            return false;
+            return true;
         default:
             return false;
     }

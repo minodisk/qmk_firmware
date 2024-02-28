@@ -1,5 +1,3 @@
-#pragma once
-
 #if defined(__AVR__)
 /* -------------------- AVR (Pro Micro) ----------------------- */
 

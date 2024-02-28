@@ -5,7 +5,6 @@ core:
   - tests/**/*
   - util/**/*
   - platforms/**/*
-  - builddefs/**/*
   - Makefile
   - '*.mk'
 dependencies:

@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega328p
+
+# Bootloader selection
+BOOTLOADER = usbasploader
+
 # Build Options
 #   change yes to no to disable
 #
@@ -14,3 +20,4 @@ AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes
 LTO_ENABLE = yes
 OLED_ENABLE = yes
+OLED_DRIVER = SSD1306

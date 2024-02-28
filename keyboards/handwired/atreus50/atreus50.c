@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "atreus50.h"
 
 void matrix_init_kb(void) {
 

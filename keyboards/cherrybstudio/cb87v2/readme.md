@@ -4,7 +4,7 @@
 
 An advance TKL PCB with many configurable layouts
 
-* Keyboard Maintainer: [lunaticwhat](https://github.com/lunaticwhat)
+* Keyboard Maintainer: duongaanh
 * Hardware Supported: cb87v2, atmega32u4
 * Hardware Availability: [CherryB Studio](https://discord.gg/qVwv3gcq83)
 

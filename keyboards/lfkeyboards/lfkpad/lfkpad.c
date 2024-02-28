@@ -1,3 +1,5 @@
+#include "lfkpad.h"
+
 #include "quantum.h"
 
 #include <avr/timer_avr.h>

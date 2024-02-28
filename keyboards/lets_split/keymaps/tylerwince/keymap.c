@@ -26,7 +26,7 @@ enum {
   TD_SEMI_COLON,
 };
 
-tap_dance_action_t tap_dance_actions[] = {
+qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_SEMI_COLON] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
 };
 

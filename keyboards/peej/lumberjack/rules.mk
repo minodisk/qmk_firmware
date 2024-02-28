@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega328p
+
+# Bootloader selection
+BOOTLOADER = usbasploader
+
 # Build Options
 #   change yes to no to disable
 #
@@ -10,3 +16,5 @@ NKRO_ENABLE = no            # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
+
+LAYOUTS = ortho_5x12

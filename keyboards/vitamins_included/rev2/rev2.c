@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "rev2.h"
 
 bool is_keyboard_left(void) {
     #if defined(MASTER_LEFT)

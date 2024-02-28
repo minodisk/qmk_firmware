@@ -1,3 +1,12 @@
+
+# MCU for Elite-C/Pro Micro
+MCU = atmega32u4
+
+# BOOTLOADER for Elite-C
+# BOOTLOADER = atmel-dfu
+# BOOTLOADER for Pro Micro
+# BOOTLOADER = caterina
+
 # Build Options
 
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite

@@ -11,7 +11,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "quantum.h"
+#include "cb87rgb.h"
 
 //x = 224 / (NUMBER_OF_COLS - 1) * COL_POSITION
 //y =  64 / (NUMBER_OF_ROWS - 1) * ROW_POSITION
@@ -48,16 +48,13 @@ led_config_t g_led_config = { {
 
 } };
 
-bool rgb_matrix_indicators_kb(void) {
-    if (!rgb_matrix_indicators_user()) {
-        return false;
-    }
+__attribute__ ((weak))
+void rgb_matrix_indicators_user(void) {
     if (host_keyboard_led_state().caps_lock) {
         rgb_matrix_set_color(51, 255, 255, 255);
     }
     if (host_keyboard_led_state().scroll_lock) {
         rgb_matrix_set_color(14, 255, 255, 255);
     }
-    return true;
 }
 #endif

@@ -1,2 +1,2 @@
-WS2812_DRIVER_REQUIRED = yes
+SRC += ws2812.c
 SRC += color.c

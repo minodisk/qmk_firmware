@@ -30,6 +30,9 @@
 
 void process_wheel(void);
 
+#define LAYOUT(BLL, BL, BM, BR, BRR, BF, BB, BDPI) \
+    { {BL, BM, BR, BF, BB, BRR, BLL, BDPI}, }
+
 typedef union {
     uint32_t raw;
     struct {
@@ -41,8 +44,17 @@ extern keyboard_config_t keyboard_config;
 extern uint16_t          dpi_array[];
 
 enum ploopy_keycodes {
-    DPI_CONFIG = QK_KB_0,
+#ifdef VIA_ENABLE
+    DPI_CONFIG = USER00,
+#else
+    DPI_CONFIG = SAFE_RANGE,
+#endif
     DRAG_SCROLL,
+#ifdef VIA_ENABLE
+    PLOOPY_SAFE_RANGE = SAFE_RANGE,
+#else
+    PLOOPY_SAFE_RANGE,
+#endif
 };
 
 bool encoder_update_user(uint8_t index, bool clockwise);

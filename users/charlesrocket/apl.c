@@ -99,7 +99,7 @@ enum unicode_names {
   QUAD_COLON
 };
 
-const uint32_t unicode_map[] PROGMEM = {
+const uint32_t PROGMEM unicode_map[] = {
   [DIAMOND]          = 0x25CA, // ◊      0
   [QUAD_DIAMOND]     = 0x233A, // ⌺
   [DIAERESIS]        = 0x00A8, // ¨

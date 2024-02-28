@@ -1,8 +1,5 @@
 name: Generate Docs
 
-permissions:
-  contents: write
-
 on:
   push:
     branches:
@@ -17,7 +14,7 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    container: ghcr.io/qmk/qmk_cli
+    container: qmkfm/qmk_cli
 
     # protect against those who develop with their fork on master
     if: github.repository == 'qmk/qmk_firmware'
@@ -37,7 +34,7 @@ jobs:
         qmk --verbose generate-docs
 
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@v4.4.3
+      uses: JamesIves/github-pages-deploy-action@v4.4.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BASE_BRANCH: master

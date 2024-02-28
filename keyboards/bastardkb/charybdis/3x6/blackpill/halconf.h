@@ -1,5 +1,4 @@
-/**
- * Copyright 2020 Nick Brassel (tzarc)
+/*
  * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,4 +23,4 @@
 #define SPI_USE_WAIT TRUE
 #define SPI_SELECT_MODE SPI_SELECT_MODE_PAD
 
-#include_next <halconf.h>
+#include_next "halconf.h"

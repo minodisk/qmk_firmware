@@ -9,47 +9,47 @@ enum td_keys {
 };
 
 
-void td_spade_lnx (tap_dance_state_t *state, void *user_data) {
+void td_spade_lnx (qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         register_unicode(0x2660); // ♠
     } else {
-        set_unicode_input_mode(UNICODE_MODE_LINUX);
+        set_unicode_input_mode(UC_LNX);
     }
     reset_tap_dance(state);
 }
 
 
-void td_diamond_osx (tap_dance_state_t *state, void *user_data) {
+void td_diamond_osx (qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         register_unicode(0x2666); // ♦
     } else {
-        set_unicode_input_mode(UNICODE_MODE_MACOS);
+        set_unicode_input_mode(UC_OSX);
     }
     reset_tap_dance(state);
 }
 
 
-void td_club_win (tap_dance_state_t *state, void *user_data) {
+void td_club_win (qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         register_unicode(0x2663); // ♣
     } else {
-        set_unicode_input_mode(UNICODE_MODE_WINDOWS);
+        set_unicode_input_mode(UC_WIN);
     }
     reset_tap_dance(state);
 }
 
 
-void td_heart_winc (tap_dance_state_t *state, void *user_data) {
+void td_heart_winc (qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         register_unicode(0x2665); // ♥
     } else {
-        set_unicode_input_mode(UNICODE_MODE_WINCOMPOSE);
+        set_unicode_input_mode(UC_WINC);
     }
     reset_tap_dance(state);
 }
 
 
-tap_dance_action_t tap_dance_actions[] = {
+qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_K0] = ACTION_TAP_DANCE_FN(td_spade_lnx),
     [TD_K1] = ACTION_TAP_DANCE_FN(td_diamond_osx),
     [TD_K2] = ACTION_TAP_DANCE_FN(td_club_win),

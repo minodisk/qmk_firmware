@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = framework_via(
     _______, _______, _______, _______, _______, _______, _______, _______,   _______, KC_MINS, KC_EQL,  _______,
-    QK_LEAD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,   _______, KC_LBRC, KC_RBRC, KC_BSLS,
+    KC_LEAD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,   _______, KC_LBRC, KC_RBRC, KC_BSLS,
     KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______, _______, _______,   _______, _______, _______, _______,
     _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, _______,   _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, MO(_BOTH), KC_HOME, KC_PGDN, KC_PGUP, KC_END,
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, EE_CLR,  DB_TOGG,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, EEP_RST, DEBUG,
     C(KC_Z), C(KC_Y)
 ),
 
@@ -78,35 +78,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 };
 
-void leader_end_user(void) {
-    // qq, alt+f4 close window
-    if (leader_sequence_two_keys(KC_Q, KC_Q)) {
-        tap_code16(A(KC_F4));
-    }
+LEADER_EXTERNS();
 
-    // ee, open explorer
-    if (leader_sequence_two_keys(KC_E, KC_E)) {
-        tap_code16(G(KC_E));
-    }
+void matrix_scan_user(void) {
+    LEADER_DICTIONARY() {
+        leading = false;
+        leader_end();
 
-    // rr, windows run prompt
-    if (leader_sequence_two_keys(KC_R, KC_R)) {
-        tap_code16(G(KC_R));
-    }
+        // qq, alt+f4 close window
+        SEQ_TWO_KEYS(KC_Q, KC_Q) {
+            tap_code16(A(KC_F4));
+        }
 
-    // ww, maximize window
-    if (leader_sequence_two_keys(KC_W, KC_W)) {
-        tap_code16(G(KC_UP));
-    }
+        // ee, open explorer
+        SEQ_TWO_KEYS(KC_E, KC_E) {
+            tap_code16(G(KC_E));
+        }
 
-    // ss, minimize window
-    if (leader_sequence_two_keys(KC_S, KC_S)) {
-        tap_code16(G(KC_DOWN));
-    }
+        // rr, windows run prompt
+        SEQ_TWO_KEYS(KC_R, KC_R) {
+            tap_code16(G(KC_R));
+        }
 
-    // <space><space>, toggle desktop
-    if (leader_sequence_two_keys(KC_SPC, KC_SPC)) {
-        tap_code16(G(KC_D));
+        // ww, maximize window
+        SEQ_TWO_KEYS(KC_W, KC_W) {
+            tap_code16(G(KC_UP));
+        }
+
+        // ss, minimize window
+        SEQ_TWO_KEYS(KC_S, KC_S) {
+            tap_code16(G(KC_DOWN));
+        }
+
+        // <space><space>, toggle desktop
+        SEQ_TWO_KEYS(KC_SPC, KC_SPC) {
+            tap_code16(G(KC_D));
+        }
     }
 }
 

@@ -5,8 +5,6 @@
 
 #pragma once
 
-#undef LAYER_STATE_8BIT
-
 #define XXX KC_NO
 
 #define LAYOUT_miryoku( \

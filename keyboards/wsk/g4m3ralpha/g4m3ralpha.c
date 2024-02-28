@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "g4m3ralpha.h"
 
 
 void matrix_init_kb(void) {

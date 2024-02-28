@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "kanu.h"
 
 void led_init_ports(void) {
   setPinOutput(B2);

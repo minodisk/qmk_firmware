@@ -11,16 +11,6 @@ KEY_LOCK_ENABLE            = no
 WPM_ENABLE                 = yes
 
 ifeq ($(strip $(KEYBOARD)), splitkb/kyria/rev1/proton_c)
-    OVERLOAD_FEATURES = yes
-endif
-ifeq ($(strip $(KEYBOARD)), splitkb/kyria/rev3)
-    OVERLOAD_FEATURES = yes
-    CONVERT_TO        = proton_c
-    WS2812_DRIVER     = pwm
-    SERIAL_DRIVER     = usart
-endif
-
-ifeq ($(strip $(OVERLOAD_FEATURES)), yes)
     RGB_MATRIX_ENABLE      = yes
     CONSOLE_ENABLE         = yes      # Console for debug
     MOUSEKEY_ENABLE        = yes      # Mouse keys
@@ -28,10 +18,9 @@ ifeq ($(strip $(OVERLOAD_FEATURES)), yes)
     SWAP_HANDS_ENABLE      = yes
     LTO_ENABLE             = no
     ENCODER_MAP_ENABLE     = yes
-    AUTOCORRECT_ENABLE     = yes
+    AUTOCORRECTION_ENABLE  = yes
     CAPS_WORD_ENABLE       = yes
-    AUDIO_ENABLE           = no
-    DEBUG_MATRIX_SCAN_RATE_ENABLE = api
+    OLED_DRIVER            = custom
 else
     LTO_ENABLE             = yes
     BOOTLOADER             = qmk-hid

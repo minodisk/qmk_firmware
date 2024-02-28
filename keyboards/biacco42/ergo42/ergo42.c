@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "ergo42.h"
 
 #ifdef SWAP_HANDS_ENABLE
 __attribute__ ((weak))

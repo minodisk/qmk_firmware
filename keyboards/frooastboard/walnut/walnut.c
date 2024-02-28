@@ -1,11 +1,11 @@
 // Copyright 2022 Simon Benezan (@Frooastside)
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include "quantum.h"
+#include "walnut.h"
 
 #if defined(RGB_MATRIX_ENABLE)
 
-const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT] = {
+const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
 /* Refer to IS31 manual for these locations
  *   driver
  *   |  R location

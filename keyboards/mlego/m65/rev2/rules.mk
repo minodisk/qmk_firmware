@@ -1,3 +1,9 @@
+# MCU name
+MCU = STM32F103  #GD32F303CCT6 weact
+
+# Bootloader selection
+BOOTLOADER = stm32duino
+
 # Build Options
 #   change yes to no to disable
 #

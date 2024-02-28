@@ -2,6 +2,7 @@
 #include <avr/timer_avr.h>
 #include <avr/wdt.h>
 #include "cu75.h"
+#include "keymap.h"
 #include "debug.h"
 #include "../lfkeyboards/issi.h"
 #include "../lfkeyboards/TWIlib.h"
@@ -97,7 +98,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record)
     return process_record_user(keycode, record);
 }
 
-void reset_keyboard_kb(void){
+void reset_keyboard_kb(){
 #ifdef WATCHDOG_ENABLE
     MCUSR = 0;
     wdt_disable();

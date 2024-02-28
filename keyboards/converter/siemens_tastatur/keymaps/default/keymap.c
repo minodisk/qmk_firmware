@@ -51,11 +51,10 @@ void matrix_init_user(void) {
   writePinLow(B0);
 }
 
-bool led_update_user(led_t led_state) {
-    if (led_state.caps_lock) {
+void led_set_user(uint8_t usb_led) {
+    if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
         writePinHigh(B0);
     } else {
         writePinLow(B0);
     }
-    return false;
 }

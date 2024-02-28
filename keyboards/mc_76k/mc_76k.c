@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "mc_76k.h"
 
 void keyboard_pre_init_kb (void) {
   setPinOutput(D2);

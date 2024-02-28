@@ -7,7 +7,7 @@ enum unicode_name {
 //<enum/>
 };
 
-const uint32_t unicode_map[] PROGMEM = {
+const uint32_t PROGMEM unicode_map[] = {
 //<uc_map/>
 };
 

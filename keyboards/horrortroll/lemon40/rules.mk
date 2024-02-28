@@ -1,5 +1,11 @@
 SRC += lib/bongocat.c
 
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -15,6 +21,7 @@ AUDIO_ENABLE = no           # Audio output
 
 # OLED enabled
 OLED_ENABLE = yes
+OLED_DRIVER = SSD1306
 WPM_ENABLE = yes
 
 # Additional thing to reduce compiled size

@@ -75,7 +75,7 @@ void update_led(void) {
       rgblight_sethsv_noeeprom(HSV_MAGENTA);
       break;
     }
-  if (host_keyboard_led_state().caps_lock) {
+  if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)) {
     rgblight_sethsv_range(HSV_WHITE,0,4);
     rgblight_sethsv_range(HSV_WHITE,12,16);
   }

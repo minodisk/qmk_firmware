@@ -1,8 +1,7 @@
 // Copyright 2022 Andy Tsai (@atsai)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "quantum.h"
-
+#include QMK_KEYBOARD_H
 static uint16_t buzzer_timer = 0;
 static uint8_t buzzer_dwell = 15;
 static uint8_t buzzer_dwell_change = 1;
@@ -12,7 +11,11 @@ static bool buzzer_active = false;
 static bool initial_keypress = false;
 
 enum custom_keycodes{
-    KC_HPTON = QK_KB_0,
+    #ifdef VIA_ENABLE
+    KC_HPTON = USER00,
+    #else
+    KC_HPTON = SAFE_RANGE,
+    #endif
     KC_HPTOFF,
     KC_HPTTOG,
     KC_HPTRST,

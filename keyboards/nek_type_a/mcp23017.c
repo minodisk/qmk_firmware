@@ -53,7 +53,7 @@ void expander_init(void) {
 }
 
 // set IN and HI
-void expander_unselect_all(void) {
+void expander_unselect_all() {
     expander_write(EXPANDER_REG_IODIRA, 0xff);
     expander_write(EXPANDER_REG_IODIRB, 0xff);
     expander_write(EXPANDER_REG_OLATA, 0xff);
@@ -74,7 +74,7 @@ void expander_select(uint8_t pin) {
     wait_us(EXPANDER_PAUSE);
 }
 
-void expander_config(void) {
+void expander_config() {
     // set everything to input
     expander_write(EXPANDER_REG_IODIRA, 0xff);
     expander_write(EXPANDER_REG_IODIRB, 0xff);

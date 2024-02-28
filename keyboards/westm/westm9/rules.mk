@@ -1,3 +1,9 @@
+# MCU name
+MCU = STM32F072
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Wildcard to allow APM32 MCU
 DFU_SUFFIX_ARGS = -v FFFF -p FFFF
 
@@ -15,5 +21,6 @@ RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 
 OLED_ENABLE = yes			# Enable the OLED feature
+OLED_DRIVER = SSD1306    	# OLED driver
 
 DEFAULT_FOLDER = westm/westm9/rev2

@@ -15,11 +15,9 @@
  */
 
 /**
- * \file
+ * \defgroup send_string
  *
- * \defgroup send_string Send String API
- *
- * \brief These functions allow you to create macros by typing out sequences of keystrokes.
+ * Send String API. These functions allow you to create macros by typing out sequences of keystrokes.
  * \{
  */
 

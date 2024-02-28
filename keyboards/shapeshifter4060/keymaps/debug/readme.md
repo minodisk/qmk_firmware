@@ -12,7 +12,7 @@ To compile and flash to the board:
     
 If you want to use this with a Proton C, do this instead:
 
-    make shapeshifter4060:debug CONVERT_TO=proton_c
+    make shapeshifter4060:debug CTPC=yes
 
 To just compile:
 

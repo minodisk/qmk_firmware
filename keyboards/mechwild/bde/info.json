@@ -5,6 +5,7 @@
     "usb": {
         "vid": "0x6D77"
     },
+    "debounce": 5,
     "build": {
         "lto": true
     },

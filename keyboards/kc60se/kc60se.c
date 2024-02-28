@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include QMK_KEYBOARD_H
 
 void matrix_init_kb(void){
     setPinOutput(B2);

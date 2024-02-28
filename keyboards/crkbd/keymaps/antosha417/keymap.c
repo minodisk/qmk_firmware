@@ -165,8 +165,11 @@ enum combo_events {
   DELQ_COMBO,
   SAVEQ_COMBO,
   BSPCQ_COMBO,
-  BSPCWQ_COMBO
+  BSPCWQ_COMBO,
+
+  COMBO_LENGTH
 };
+uint16_t COMBO_LEN = COMBO_LENGTH;
 
 const uint16_t PROGMEM ru_combo[] = {KC_R, U_CTRL, COMBO_END};
 const uint16_t PROGMEM en_combo[] = {U_CTRL, S_ALT, COMBO_END};
@@ -213,7 +216,7 @@ combo_t key_combos[] = {
     [SAVEQ_COMBO] = COMBO(saveq_combo, VIM_SAVE),
     [BSPCWQ_COMBO] = COMBO(bspcwq_combo, DELETE_WORD),
 };
-
+ 
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -395,3 +398,4 @@ void matrix_scan_user(void) {
   #include "mod_tap_keys.h"
   #undef MOD_TAP_KEY
 }
+

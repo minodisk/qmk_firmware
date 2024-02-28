@@ -19,4 +19,5 @@
 
 #define RESET_LAYER 15
 
+#define COMBO_COUNT 2
 #define COMBO_TERM 250

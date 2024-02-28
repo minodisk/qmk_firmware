@@ -1,15 +1,15 @@
 #include <stdio.h>
-#include "quantum.h"
+#include "comet46.h"
 
 char host_led_state_str[22];
 
 const char *read_host_led_state(void) {
-  led_t led_state = host_keyboard_led_state();
+  uint8_t leds = host_keyboard_leds();
 
   snprintf(host_led_state_str, sizeof(host_led_state_str), "Lock: %s%s%s",
-           led_state.caps_lock ? "CAPL " : "",
-           led_state.scroll_lock ? "SCRL " : "",
-           led_state.num_lock ? "NUML" : "");
+           (leds & (1 << USB_LED_CAPS_LOCK)) ? "CAPL " : "",
+           (leds & (1 << USB_LED_SCROLL_LOCK)) ? "SCRL " : "",
+           (leds & (1 << USB_LED_NUM_LOCK)) ? "NUML" : "");
 
   return host_led_state_str;
 }

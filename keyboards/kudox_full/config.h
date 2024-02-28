@@ -3,6 +3,9 @@
 
 #pragma once
 
+#include "config_common.h"
+
+#define USE_SERIAL
 
 /* Select hand configuration */
 #define MASTER_LEFT

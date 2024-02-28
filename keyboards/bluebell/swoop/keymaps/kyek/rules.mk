@@ -6,6 +6,7 @@ LTO_ENABLE = no
 EXTRAKEY_ENABLE = no
 
 # ENCODER_ENABLE = no
+# OLED_DRIVER_ENABLE = no
 # WPM_ENABLE = no
 
 # Enable keyboard underlight functionality

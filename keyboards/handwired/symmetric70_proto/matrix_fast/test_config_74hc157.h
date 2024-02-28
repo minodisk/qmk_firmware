@@ -1,5 +1,3 @@
-#pragma once
-
 #define MATRIX_EXTENSION_74HC157 B2
 // #define MATRIX_EXTENSION_74HC153 B2, B6
 

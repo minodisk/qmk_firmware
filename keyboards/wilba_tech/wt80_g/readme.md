@@ -2,7 +2,7 @@
 
 WT80-G is a keyboard PCB supporting TKL layout and daughterboard USB-C. [More info at wilba.tech](https://wilba.tech/)
 
-* Keyboard Maintainer: [Wilba](https://github.com/wilba)
+* Keyboard Maintainer: [Wilba6582](https://github.com/Wilba6582)
 * Hardware Supported: wilba.tech WT80-G
 * Hardware Availability: [wilba.tech](https://wilba.tech/)
 

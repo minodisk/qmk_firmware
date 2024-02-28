@@ -238,15 +238,15 @@ void adb_host_kbd_led(uint8_t led) {
 }
 
 #ifdef ADB_PSW_BIT
-static inline void psw_lo(void) {
+static inline void psw_lo() {
     ADB_DDR |= (1 << ADB_PSW_BIT);
     ADB_PORT &= ~(1 << ADB_PSW_BIT);
 }
-static inline void psw_hi(void) {
+static inline void psw_hi() {
     ADB_PORT |= (1 << ADB_PSW_BIT);
     ADB_DDR &= ~(1 << ADB_PSW_BIT);
 }
-static inline bool psw_in(void) {
+static inline bool psw_in() {
     ADB_PORT |= (1 << ADB_PSW_BIT);
     ADB_DDR &= ~(1 << ADB_PSW_BIT);
     return ADB_PIN & (1 << ADB_PSW_BIT);

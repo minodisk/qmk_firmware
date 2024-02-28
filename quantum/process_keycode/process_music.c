@@ -14,10 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "process_music.h"
-#include "timer.h"
 
 #ifdef AUDIO_ENABLE
-#    include "audio.h"
 #    include "process_audio.h"
 #endif
 #if defined(MIDI_ENABLE) && defined(MIDI_BASIC)
@@ -103,17 +101,17 @@ void music_all_notes_off(void) {
 }
 
 bool process_music(uint16_t keycode, keyrecord_t *record) {
-    if (keycode == QK_MUSIC_ON && record->event.pressed) {
+    if (keycode == MU_ON && record->event.pressed) {
         music_on();
         return false;
     }
 
-    if (keycode == QK_MUSIC_OFF && record->event.pressed) {
+    if (keycode == MU_OFF && record->event.pressed) {
         music_off();
         return false;
     }
 
-    if (keycode == QK_MUSIC_TOGGLE && record->event.pressed) {
+    if (keycode == MU_TOG && record->event.pressed) {
         if (music_activated) {
             music_off();
         } else {
@@ -122,17 +120,17 @@ bool process_music(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    if (keycode == QK_MIDI_ON && record->event.pressed) {
+    if (keycode == MI_ON && record->event.pressed) {
         midi_on();
         return false;
     }
 
-    if (keycode == QK_MIDI_OFF && record->event.pressed) {
+    if (keycode == MI_OFF && record->event.pressed) {
         midi_off();
         return false;
     }
 
-    if (keycode == QK_MIDI_TOGGLE && record->event.pressed) {
+    if (keycode == MI_TOG && record->event.pressed) {
         if (midi_activated) {
             midi_off();
         } else {
@@ -141,7 +139,7 @@ bool process_music(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    if (keycode == QK_MUSIC_MODE_NEXT && record->event.pressed) {
+    if (keycode == MU_MOD && record->event.pressed) {
         music_mode_cycle();
         return false;
     }
@@ -319,10 +317,10 @@ void music_task(void) {
     }
 }
 
-__attribute__((weak)) void music_on_user(void) {}
+__attribute__((weak)) void music_on_user() {}
 
-__attribute__((weak)) void midi_on_user(void) {}
+__attribute__((weak)) void midi_on_user() {}
 
-__attribute__((weak)) void music_scale_user(void) {}
+__attribute__((weak)) void music_scale_user() {}
 
 #endif // defined(AUDIO_ENABLE) || (defined(MIDI_ENABLE) && defined(MIDI_BASIC))

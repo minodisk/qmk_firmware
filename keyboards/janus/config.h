@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 /* Serial communication */
 #define SERIAL_USART_FULL_DUPLEX

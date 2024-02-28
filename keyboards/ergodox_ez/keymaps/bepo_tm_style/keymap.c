@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     BP_DLR,   BP_DQUO, BP_LDAQ, BP_RDAQ, BP_LPRN, BP_RPRN, KC_DEL,
     KC_TAB,   BP_B,    BP_EACU, BP_P,    BP_O,    BP_EGRV, KC_BSPC,
     KC_LSFT,  BP_A,    BP_U,    BP_I,    BP_E,    BP_COMM,
-    KC_LCTL,  BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,    KC_ENT,
+    KC_LCTRL, BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,    KC_ENT,
     ESC_FN,   BP_ECIR, KC_LGUI, KC_LALT, SPC_RALT,
                                                           TT(SWAP), KC_MNXT,
                                                                     KC_MPLY,
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SLEP, KC_F1, KC_F2,  KC_F3,   KC_F4,    KC_F5,    ___,
     ___,     ___,   ___,    ___,     ___,      ___,      ___,
     ___,     ___,   ___,    ___,     ___,      KC_LSFT,
-    ___,     ___,   MK_CUT, MK_COPY, MK_PASTE, KC_LCTL,  ___,
+    ___,     ___,   MK_CUT, MK_COPY, MK_PASTE, KC_LCTRL, ___,
     ___,     ___,   ___,    ___,     ___,
                                                      ___, KC_VOLU,
                                                           KC_VOLD,
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SLEP, KC_F1, KC_F2,   KC_F3,   KC_F4,    KC_F5,    ___,
     ___,     ___,   KC_BTN4, KC_MS_U, KC_BTN5,  ___,      ___,
     ___,     ___,   KC_MS_L, KC_MS_D, KC_MS_R,  KC_LSFT,
-    ___,     ___,   MK_CUT,  MK_COPY, MK_PASTE, KC_LCTL,  ___,
+    ___,     ___,   MK_CUT,  MK_COPY, MK_PASTE, KC_LCTRL, ___,
     ___,     ___,   ___,     ___,     ___,
                                                   ___, KC_VOLU,
                                                        KC_VOLD,
@@ -128,8 +128,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                    ___,
                                          ___, ___, ___,
     /* right hand */
-         ___,     ___,     ___,   ___,   ___,     ___,     KC_NUM,
-         ___,     KC_PEQL, KC_P7, KC_P8, KC_P9,   KC_PMNS, KC_SCRL,
+         ___,     ___,     ___,   ___,   ___,     ___,     KC_NLCK,
+         ___,     KC_PEQL, KC_P7, KC_P8, KC_P9,   KC_PMNS, KC_SLCK,
                   KC_PCMM, KC_P4, KC_P5, KC_P6,   KC_PPLS, ___,
          KC_PENT, KC_P0,   KC_P1, KC_P2, KC_P3,   KC_PAST, ___,
                            ___,   ___,   ___,     KC_PSLS, ___,
@@ -196,18 +196,18 @@ layer_state_t layer_state_set_user(layer_state_t state);
 // Method called at the end of the tap dance on the TAP_MACRO key. That key is
 // used to start recording a macro (double tap or more), to stop recording (any
 // number of tap), or to play the recorded macro (1 tap).
-void macro_tapdance_fn(tap_dance_state_t *state, void *user_data) {
+void macro_tapdance_fn(qk_tap_dance_state_t *state, void *user_data) {
   uint16_t keycode;
   keyrecord_t record;
   dprintf("macro_tap_dance_fn %d\n", state->count);
   if (is_macro1_recording) {
-    keycode = DM_RSTP;
+    keycode = DYN_REC_STOP;
     is_macro1_recording = false;
     layer_state_set_user(current_layer_state);
   } else if (state->count == 1) {
-    keycode = DM_PLY1;
+    keycode = DYN_MACRO_PLAY1;
   } else {
-    keycode = DM_REC1;
+    keycode = DYN_REC_START1;
     is_macro1_recording = true;
     layer_state_set_user(current_layer_state);
   }
@@ -219,7 +219,7 @@ void macro_tapdance_fn(tap_dance_state_t *state, void *user_data) {
 }
 
 // The definition of the tap dance actions:
-tap_dance_action_t tap_dance_actions[] = {
+qk_tap_dance_action_t tap_dance_actions[] = {
   // This Tap dance plays the macro 1 on TAP and records it on double tap.
   [TAP_MACRO] = ACTION_TAP_DANCE_FN(macro_tapdance_fn),
 };
@@ -253,7 +253,12 @@ void matrix_scan_user(void) {
 };
 
 // The state of the LEDs requested by the system, as a bitmask.
-static led_t sys_led_state = {0};
+static uint8_t sys_led_state = 0;
+
+// Use these masks to read the system LEDs state.
+static const uint8_t sys_led_mask_num_lock = 1 << USB_LED_NUM_LOCK;
+static const uint8_t sys_led_mask_caps_lock = 1 << USB_LED_CAPS_LOCK;
+static const uint8_t sys_led_mask_scroll_lock = 1 << USB_LED_SCROLL_LOCK;
 
 // Value to use to switch LEDs on. The default value of 255 is far too bright.
 static const uint8_t max_led_value = 20;
@@ -289,26 +294,25 @@ void led_3_off(void) {
 }
 
 // Called when the computer wants to change the state of the keyboard LEDs.
-bool led_update_user(led_t led_state) {
-  sys_led_state = led_state;
+void led_set_user(uint8_t usb_led) {
+  sys_led_state = usb_led;
   if (LAYER_ON(SYSLEDS)) {
-    if (sys_led_state.caps_lock) {
+    if (sys_led_state & sys_led_mask_caps_lock) {
       led_1_on();
     } else {
       led_1_off();
     }
-    if (sys_led_state.num_lock) {
+    if (sys_led_state & sys_led_mask_num_lock) {
       led_2_on();
     } else {
       led_2_off();
     }
-    if (sys_led_state.scroll_lock) {
+    if (sys_led_state & sys_led_mask_scroll_lock) {
       led_3_on();
     } else {
       led_3_off();
     }
   }
-  return false;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -323,7 +327,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   }
 
   if (LAYER_ON(SYSLEDS)) {
-    led_update_user(sys_led_state);
+    led_set_user(sys_led_state);
     return state;
   }
 

@@ -22,6 +22,5 @@
 
 #define MASTER_LEFT
 
-#define QUICK_TAP_TERM 0
+#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 150 /* ms */
-#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY

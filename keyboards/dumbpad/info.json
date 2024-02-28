@@ -6,8 +6,5 @@
     "usb": {
         "vid": "0xDEAF",
         "pid": "0x0913"
-    },
-    "tapping": {
-        "toggle": 2
     }
 }

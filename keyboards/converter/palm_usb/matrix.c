@@ -17,9 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "matrix.h"
-#include "debug.h"
-#include "wait.h"
+#include QMK_KEYBOARD_H
 #include "uart.h"
 #include "timer.h"
 
@@ -136,14 +134,14 @@ uint8_t rts_reset(void) {
     if (firstread) {
         writePinLow(RTS_PIN);
     } 
-     wait_ms(10);
+     _delay_ms(10);
     writePinHigh(RTS_PIN);
     
 
 /* the future is Arm 
     if (!palReadPad(RTS_PIN_IOPRT))
   {
-    wait_ms(10);
+    _delay_ms(10);
     palSetPadMode(RTS_PINn_IOPORT, PinDirectionOutput_PUSHPULL);
     palSetPad(RTS_PORT, RTS_PIN);
   }
@@ -152,13 +150,13 @@ uint8_t rts_reset(void) {
     palSetPadMode(RTS_PIN_RTS_PORT, PinDirectionOutput_PUSHPULL);
     palSetPad(RTS_PORT, RTS_PIN);
     palClearPad(RTS_PORT, RTS_PIN);
-    wait_ms(10);
+    _delay_ms(10);
     palSetPad(RTS_PORT, RTS_PIN);
   }
 */
 
 
- wait_ms(5);  
+ _delay_ms(5);  
  //print("rts\n");
  return 1;
 }
@@ -224,7 +222,7 @@ uint8_t handspring_handshake(void) {
 
 uint8_t handspring_reset(void) {
     writePinLow(VCC_PIN);
-    wait_ms(5);
+    _delay_ms(5);
     writePinHigh(VCC_PIN);
 
     if ( handspring_handshake() ) {
@@ -259,7 +257,7 @@ void matrix_init(void)
         last_activity = timer_read();
     } else { 
         print("failed handshake");
-        wait_ms(1000);
+        _delay_ms(1000);
         //BUG /should/ power cycle or toggle RTS & reset, but this usually works. 
     }
 
@@ -273,7 +271,7 @@ void matrix_init(void)
         last_activity = timer_read();
     } else { 
         print("failed handshake");
-        wait_ms(1000);
+        _delay_ms(1000);
         //BUG /should/ power cycle or toggle RTS & reset, but this usually works. 
     }
 
@@ -282,7 +280,7 @@ void matrix_init(void)
     // initialize matrix state: all keys off
     for (uint8_t i=0; i < MATRIX_ROWS; i++) matrix[i] = 0x00;
 
-    matrix_init_kb();
+    matrix_init_quantum();
     return;
     
     
@@ -350,7 +348,7 @@ uint8_t matrix_scan(void)
         }
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
     return code;
 }
 

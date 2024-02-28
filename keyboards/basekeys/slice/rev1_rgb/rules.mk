@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # this is split keyboard.
 SPLIT_KEYBOARD = yes
 
@@ -12,5 +18,6 @@ COMMAND_ENABLE = no        # Commands for debug and configuration
 NKRO_ENABLE = no            # Enable N-Key Rollover
 RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
 OLED_ENABLE = yes
+OLED_DRIVER = SSD1306     # Disable OLED driver.
 
 LTO_ENABLE = yes

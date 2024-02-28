@@ -146,7 +146,7 @@ void update_keycode_status(uint16_t keycode, bool last, bool current) {
 
 void pointing_device_init(void) { thumbstick_init(); }
 
-bool pointing_device_task(void) {
+void pointing_device_task(void) {
     report_mouse_t report = pointing_device_get_report();
 
     if (!isLeftHand) {
@@ -191,5 +191,5 @@ bool pointing_device_task(void) {
     }
 
     pointing_device_set_report(report);
-    return pointing_device_send();
+    pointing_device_send();
 }

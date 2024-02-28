@@ -21,7 +21,7 @@ uint32_t tChord			= 0;		// Protects state of cChord
 
 #ifndef STENOLAYERS
 uint32_t stenoLayers[] = { PWR };
-size_t 	 stenoLayerCount = ARRAY_SIZE(stenoLayers);
+size_t 	 stenoLayerCount = sizeof(stenoLayers)/sizeof(stenoLayers[0]);
 #endif
 
 // Mode state
@@ -370,7 +370,7 @@ void saveState(uint32_t cleanChord) {
 	for (int i = 0; i < 32; i++) 
 		pChordState[i] = chordState[i];
 }
-void restoreState(void) {
+void restoreState() {
 	cChord = pChord;
 	chordIndex = pChordIndex;
 	for (int i = 0; i < 32; i++) 

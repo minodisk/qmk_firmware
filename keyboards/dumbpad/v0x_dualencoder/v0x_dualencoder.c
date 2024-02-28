@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "quantum.h"
+#include "v0x_dualencoder.h"
 
 void keyboard_pre_init_kb(void) {
     // Set LED IO as outputs
@@ -22,7 +22,7 @@ void keyboard_pre_init_kb(void) {
     keyboard_pre_init_user();
 }
 
-void shutdown_user(void) {
+void shutdown_user() {
     // Shutdown LEDs
     writePinLow(LED_00);
     writePinLow(LED_01);

@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "kastenwagen48.h"
 
 #ifndef LAYER_LED_DISABLE
 

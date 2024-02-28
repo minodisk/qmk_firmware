@@ -10,5 +10,5 @@
 ## Building and flashing
 
 ```
-make jkeys_design/gentleman65:briianpowell:flash
+make gentleman65:briianpowell:flash
 ```

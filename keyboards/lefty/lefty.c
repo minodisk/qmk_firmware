@@ -14,7 +14,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "quantum.h"
+#include "lefty.h"
 
 #ifdef OLED_ENABLE
 bool oled_task_kb(void) {

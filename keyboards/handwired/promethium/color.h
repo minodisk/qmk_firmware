@@ -1,5 +1,3 @@
-#pragma once
-
 #define COLOR_BLANK       0, 0, 0
 
 #define COLOR_BLACK       0, 0, 0

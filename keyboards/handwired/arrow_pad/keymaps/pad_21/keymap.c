@@ -2,19 +2,6 @@
 #include QMK_KEYBOARD_H
 #include "led.h"
 
-// This is the 21-key keypad to 2x11 element matrix mapping
-#define LAYOUT_pad21( \
-    k00, k01, k02, k03, \
-    k10, k11, k12, k13, \
-    k04, k05, k06, \
-    k14, k15, k16, k07, \
-    k08, k09, k0A, \
-    k19,      k1A, k17 \
-) { \
-    { k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0A }, \
-    { k10, k11, k12, k13, k14, k15, k16, k17, XXX, k19, k1A } \
-}
-
 enum layers {
   LAYER_BASE,
   LAYER_EDIT,
@@ -42,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [LAYER_BASE] = LAYOUT_pad21(
   KC_ESC,  KC_TAB,  KC_BSLS, MO(2),
-  KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
+  KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
   KC_P7,   KC_P8,   KC_P9,
   KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
   KC_P1,   KC_P2,   KC_P3,
@@ -57,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_BSPC,          KC_DEL,  M_SHFCT),
 
 [LAYER_FUNCTION] = LAYOUT_pad21(
-  BL_TOGG, BL_UP,   BL_DOWN, _______,
+  BL_TOGG, BL_INC,  BL_DEC,  _______,
   TG(1),   _______, _______, _______,
   _______, _______, _______,
   _______, _______, _______, _______,
@@ -109,9 +96,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
   return true;
 }
 
-bool led_update_user(led_t led_state)
+void led_set_user(uint8_t usb_led)
 {
-    if (led_state.caps_lock) {
+    if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
         // output high
         DDRD |= (1<<6);
         PORTD |= (1<<6);
@@ -120,7 +107,7 @@ bool led_update_user(led_t led_state)
         DDRD &= ~(1<<6);
         PORTD &= ~(1<<6);
     }
-    if (led_state.num_lock) {
+    if (usb_led & (1<<USB_LED_NUM_LOCK)) {
         // output low
         DDRC |= (1<<7);
         PORTC |= ~(1<<7);
@@ -129,5 +116,4 @@ bool led_update_user(led_t led_state)
         DDRC &= ~(1<<7);
         PORTC &= ~(1<<7);
     }
-    return false;
 }

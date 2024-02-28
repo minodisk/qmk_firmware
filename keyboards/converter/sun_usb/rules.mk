@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = lufa-dfu
+
 # Build Options
 #   change yes to no to disable
 #

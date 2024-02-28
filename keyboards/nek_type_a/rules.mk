@@ -1,5 +1,11 @@
+# MCU name
+MCU = atmega32u4
+
 # Processor frequency
 F_CPU = 8000000
+
+# Bootloader selection
+BOOTLOADER = caterina
 
 # Build Options
 #   change yes to no to disable
@@ -16,5 +22,6 @@ AUDIO_ENABLE = no           # Audio output
 CUSTOM_MATRIX = yes
 DEBUG_ENABLE = yes
 BLUETOOTH_ENABLE = yes
+BLUETOOTH_DRIVER = BluefruitLE
 
 SRC += matrix.c mcp23017.c

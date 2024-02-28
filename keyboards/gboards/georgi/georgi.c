@@ -1,4 +1,4 @@
-#include "georgi.h"
+#include QMK_KEYBOARD_H
 
 bool i2c_initialized = 0;
 i2c_status_t mcp23018_status = 0x20;

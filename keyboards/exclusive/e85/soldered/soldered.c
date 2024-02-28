@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "soldered.h"
 
 void keyboard_pre_init_kb(void) {
     setPinOutput(C7);

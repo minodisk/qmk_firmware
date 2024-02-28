@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "pterodactyl.h"
 
 #ifdef SWAP_HANDS_ENABLE
 __attribute__ ((weak))

@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "nebula68b.h"
 
 #ifdef RGB_MATRIX_ENABLE
 // clang-format off

@@ -17,10 +17,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "matrix.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include <avr/io.h>
 #include "wait.h"
+#include "action_layer.h"
+#include "print.h"
 #include "debug.h"
 #include "util.h"
-#include "ergotaco.h"
+#include QMK_KEYBOARD_H
 
 #ifndef DEBOUNCE
 #   define DEBOUNCE	5
@@ -107,7 +112,7 @@ void matrix_init(void)
         }
     }
 
-    matrix_init_kb();
+    matrix_init_quantum();
 }
 
 void matrix_power_up(void) {
@@ -183,7 +188,7 @@ uint8_t matrix_scan(void)
         unselect_rows();
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
 
 #ifdef DEBUG_MATRIX
     for (uint8_t c = 0; c < MATRIX_COLS; c++)

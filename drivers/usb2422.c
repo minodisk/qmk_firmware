@@ -344,7 +344,7 @@ static void USB2422_write_block(void) {
 
 // ***************************************************************
 
-void USB2422_init(void) {
+void USB2422_init() {
 #ifdef USB2422_RESET_PIN
     setPinOutput(USB2422_RESET_PIN);
 #endif
@@ -355,7 +355,7 @@ void USB2422_init(void) {
     i2c_init(); // IC2 clk must be high at USB2422 reset release time to signal SMB configuration
 }
 
-void USB2422_configure(void) {
+void USB2422_configure() {
     static const char SERNAME[] = "Unavailable";
 
     memset(&config, 0, sizeof(Usb2422_t));
@@ -385,7 +385,7 @@ void USB2422_configure(void) {
     USB2422_write_block();
 }
 
-void USB2422_reset(void) {
+void USB2422_reset() {
 #ifdef USB2422_RESET_PIN
     writePinLow(USB2422_RESET_PIN);
     wait_us(2);
@@ -393,7 +393,7 @@ void USB2422_reset(void) {
 #endif
 }
 
-bool USB2422_active(void) {
+bool USB2422_active() {
 #ifdef USB2422_ACTIVE_PIN
     return readPin(USB2422_ACTIVE_PIN);
 #else

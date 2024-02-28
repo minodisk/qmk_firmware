@@ -1,7 +1,7 @@
 // Copyright 2022 IBNobody (@IBNobody)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "quantum.h"
+#include "v2.h"
 
 #define __ NO_LED
 

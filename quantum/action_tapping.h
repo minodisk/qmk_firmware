@@ -22,11 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define TAPPING_TERM 200
 #endif
 
-/* period of quick tap(ms) */
-#if !defined(QUICK_TAP_TERM) || QUICK_TAP_TERM > TAPPING_TERM
-#    define QUICK_TAP_TERM TAPPING_TERM
-#endif
-
 /* tap count needed for toggling a feature */
 #ifndef TAPPING_TOGGLE
 #    define TAPPING_TOGGLE 5
@@ -41,25 +36,19 @@ void     action_tapping_process(keyrecord_t record);
 #endif
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record);
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record);
 bool     get_permissive_hold(uint16_t keycode, keyrecord_t *record);
+bool     get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record);
+bool     get_tapping_force_hold(uint16_t keycode, keyrecord_t *record);
 bool     get_retro_tapping(uint16_t keycode, keyrecord_t *record);
-bool     get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record);
 
 #ifdef DYNAMIC_TAPPING_TERM_ENABLE
 extern uint16_t g_tapping_term;
 #endif
 
-#if defined(TAPPING_TERM_PER_KEY) && !defined(NO_ACTION_TAPPING)
+#ifdef TAPPING_TERM_PER_KEY
 #    define GET_TAPPING_TERM(keycode, record) get_tapping_term(keycode, record)
-#elif defined(DYNAMIC_TAPPING_TERM_ENABLE) && !defined(NO_ACTION_TAPPING)
+#elif defined(DYNAMIC_TAPPING_TERM_ENABLE)
 #    define GET_TAPPING_TERM(keycode, record) g_tapping_term
 #else
 #    define GET_TAPPING_TERM(keycode, record) (TAPPING_TERM)
-#endif
-
-#ifdef QUICK_TAP_TERM_PER_KEY
-#    define GET_QUICK_TAP_TERM(keycode, record) get_quick_tap_term(keycode, record)
-#else
-#    define GET_QUICK_TAP_TERM(keycode, record) (QUICK_TAP_TERM)
 #endif

@@ -1,5 +1,5 @@
 {
-    "keyboard": "jacky_studio/piggy60/rev1/solder",
+    "keyboard": "jacky_studio/piggy60",
     "keymap": "via",
     "layout": "LAYOUT_all",
     "layers": [

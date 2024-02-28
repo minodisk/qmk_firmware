@@ -15,14 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "process_key_override.h"
+#include "quantum.h"
 #include "report.h"
 #include "timer.h"
-#include "debug.h"
-#include "wait.h"
-#include "action_util.h"
-#include "quantum.h"
-#include "quantum_keycodes.h"
+#include "process_key_override.h"
+
+#include <debug.h>
 
 #ifndef KEY_OVERRIDE_REPEAT_DELAY
 #    define KEY_OVERRIDE_REPEAT_DELAY 500
@@ -188,7 +186,7 @@ const key_override_t *clear_active_override(const bool allow_reregister) {
 
     // Then unregister the mod-free replacement key if desired
     if (unregister_replacement) {
-        if (IS_BASIC_KEYCODE(mod_free_replacement)) {
+        if (IS_KEY(mod_free_replacement)) {
             del_key(mod_free_replacement);
         } else {
             key_override_printf("NOT KEY 1\n");
@@ -324,15 +322,6 @@ static bool try_activating_override(const uint16_t keycode, const uint8_t layer,
 
         clear_active_override(false);
 
-#ifdef DUMMY_MOD_NEUTRALIZER_KEYCODE
-        // Send a dummy keycode before unregistering the modifier(s)
-        // so that suppressing the modifier(s) doesn't falsely get interpreted
-        // by the host OS as a tap of a modifier key.
-        // For example, unintended activations of the start menu on Windows when
-        // using a GUI+<kc> key override with suppressed mods.
-        neutralize_flashing_modifiers(active_mods);
-#endif
-
         active_override                 = override;
         active_override_trigger_is_down = true;
 
@@ -340,7 +329,7 @@ static bool try_activating_override(const uint16_t keycode, const uint8_t layer,
 
         if (!trigger_down && !no_trigger) {
             // When activating a key override the trigger is is always unregistered. In the case where the key that newly pressed is not the trigger key, we have to explicitly remove the trigger key from the keyboard report. If the trigger was just pressed down we simply suppress the event which also has the effect of the trigger key not being registered in the keyboard report.
-            if (IS_BASIC_KEYCODE(override->trigger)) {
+            if (IS_KEY(override->trigger)) {
                 del_key(override->trigger);
             } else {
                 unregister_code(override->trigger);
@@ -367,7 +356,7 @@ static bool try_activating_override(const uint16_t keycode, const uint8_t layer,
                 schedule_deferred_register(mod_free_replacement);
                 send_keyboard_report();
             } else {
-                if (IS_BASIC_KEYCODE(mod_free_replacement)) {
+                if (IS_KEY(mod_free_replacement)) {
                     add_key(mod_free_replacement);
                 } else {
                     key_override_printf("NOT KEY 2\n");
@@ -413,19 +402,19 @@ bool process_key_override(const uint16_t keycode, const keyrecord_t *const recor
 #endif
 
     const bool key_down = record->event.pressed;
-    const bool is_mod   = IS_MODIFIER_KEYCODE(keycode);
+    const bool is_mod   = IS_MOD(keycode);
 
     if (key_down) {
         switch (keycode) {
-            case QK_KEY_OVERRIDE_TOGGLE:
+            case KEY_OVERRIDE_TOGGLE:
                 key_override_toggle();
                 return false;
 
-            case QK_KEY_OVERRIDE_ON:
+            case KEY_OVERRIDE_ON:
                 key_override_on();
                 return false;
 
-            case QK_KEY_OVERRIDE_OFF:
+            case KEY_OVERRIDE_OFF:
                 key_override_off();
                 return false;
 

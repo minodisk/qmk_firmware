@@ -14,7 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+// ansi_tkl.c
+
+#include "ansi_tkl.h"
 
 #ifdef RGB_MATRIX_ENABLE
 led_config_t g_led_config = {{

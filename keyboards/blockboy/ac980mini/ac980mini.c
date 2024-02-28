@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "ac980mini.h"
 
 #ifdef RGB_MATRIX_ENABLE
 // LED location configuration

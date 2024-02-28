@@ -1,3 +1,5 @@
 VIA_ENABLE = yes
 LTO_ENABLE = yes
-ENCODER_MAP_ENABLE = yes
+
+# Added encoder Action
+SRC +=  encoder_actions.c

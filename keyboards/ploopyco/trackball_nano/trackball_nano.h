@@ -21,6 +21,8 @@
 
 #include "quantum.h"
 
+#define LAYOUT(k00) {{ k00 }}
+
 typedef union {
   uint32_t raw;
   struct {
@@ -31,7 +33,8 @@ typedef union {
 extern keyboard_config_t keyboard_config;
 
 enum ploopy_keycodes {
-    DPI_CONFIG = QK_KB_0,
+    DPI_CONFIG = SAFE_RANGE,
+    PLOOPY_SAFE_RANGE,
 };
 
 void cycle_dpi(void);

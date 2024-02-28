@@ -1,6 +1,6 @@
 // Copyright 2021 Joric (@joric)
 // SPDX-License-Identifier: GPL-2.0-or-later
-#include "quantum.h"
+#include "jorne.h"
 
 #ifdef OLED_ENABLE
 static void render_logo(void) {

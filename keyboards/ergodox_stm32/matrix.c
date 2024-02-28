@@ -1,10 +1,13 @@
-#include "matrix.h"
+#include <stdint.h>
+#include <stdbool.h>
 #include <string.h>
+#include <hal.h>
 #include "timer.h"
 #include "wait.h"
-#include "debug.h"
+#include "print.h"
+#include "matrix.h"
 #include "i2c_master.h"
-#include "ergodox_stm32.h"
+#include QMK_KEYBOARD_H
 
 #ifndef DEBOUNCE
 #define DEBOUNCE 10
@@ -53,7 +56,7 @@ void matrix_init(void) {
       debounce_matrix[i * MATRIX_COLS + j] = 0;
     }
   }
-  matrix_init_kb();
+  matrix_init_quantum();
 }
 
 void matrix_power_up(void) {
@@ -112,7 +115,7 @@ uint8_t matrix_scan(void) {
 
     unselect_rows();
   }
-  matrix_scan_kb();
+  matrix_scan_quantum();
   return 0;
 }
 

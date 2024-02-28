@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # Build Options
 #   change yes to no to disable
 #
@@ -14,3 +20,5 @@ AUDIO_ENABLE = no           # Audio output
 UNICODE_ENABLE = yes        # Unicode
 IOS_DEVICE_ENABLE = no      # connect to IOS Device
 ENCODER_ENABLE = no
+
+LAYOUTS = ortho_5x4 numpad_5x4

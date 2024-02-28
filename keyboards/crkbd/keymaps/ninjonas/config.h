@@ -24,7 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MASTER_LEFT
 
-#define QUICK_TAP_TERM 0
+#define USE_SERIAL_PD2
+
+#define TAPPING_FORCE_HOLD
 
 #ifdef RGB_MATRIX_ENABLE
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120

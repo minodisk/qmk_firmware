@@ -1,4 +1,4 @@
-#include QMK_KEYBOARD_H
+#include "ergodox_ez.h"
 #include "version.h"
 
 #define LONGPRESS_DELAY 180

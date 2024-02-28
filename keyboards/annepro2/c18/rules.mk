@@ -32,6 +32,7 @@ WEAR_LEVELING_DRIVER = spi_flash
 
 # Custom RGB matrix handling
 RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = custom
 
 # Keys
 CUSTOM_MATRIX = lite
@@ -42,6 +43,8 @@ RAW_ENABLE = no
 MIDI_ENABLE = no
 VIRTSER_ENABLE = no
 COMBO_ENABLE = no
+
+LAYOUTS = 60_ansi 60_iso
 
 # Anne Pro 2
 SRC = \

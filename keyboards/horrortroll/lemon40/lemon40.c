@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "lemon40.h"
 
 // OLED animation
 #include "lib/bongocat.h"

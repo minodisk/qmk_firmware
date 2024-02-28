@@ -7,12 +7,12 @@ bool process_record_keymap( uint16_t keycode, keyrecord_t *record ) {
 }
 
 __attribute__ ((weak))
-void matrix_init_keymap(void) {
+void matrix_init_keymap() {
     /* If you want a matrix init specific to your keymap, you need to define this function in your keymap */
 }
 
 __attribute__ ((weak))
-void matrix_scan_keymap(void) {
+void matrix_scan_keymap() {
     /* If you want a matrix scan specific to your keymap, you need to define this function in your keymap */
 }
 

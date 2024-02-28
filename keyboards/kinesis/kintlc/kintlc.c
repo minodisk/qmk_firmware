@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "kintlc.h"
 
 #define LED_POWER LINE_PIN13
 

@@ -1,3 +1,9 @@
+MCU = STM32F401
+BOARD = GENERIC_STM32_F401XC
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -13,6 +19,9 @@ LTO_ENABLE = no
 ENCODER_ENABLE = no
 
 BACKLIGHT_ENABLE = yes     # Enable keyboard backlight functionality
+BACKLIGHT_DRIVER = pwm
 
 EEPROM_DRIVER = i2c
 
+# Enter lower-power sleep mode when on the ChibiOS idle thread
+OPT_DEFS += -DCORTEX_ENABLE_WFI_IDLE=TRUE

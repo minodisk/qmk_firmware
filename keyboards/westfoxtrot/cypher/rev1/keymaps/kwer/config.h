@@ -16,7 +16,8 @@
 
 #pragma once
 
-#define WS2812_DI_PIN F7
+#define RGB_DI_PIN F7
+#ifdef  RGB_DI_PIN
   #define RGBLED_NUM 15
   #define RGBLIGHT_HUE_STEP 8
   #define RGBLIGHT_SAT_STEP 8
@@ -27,5 +28,6 @@
   #define RGBLIGHT_EFFECT_KNIGHT
   #define RGBLIGHT_EFFECT_KNIGHT_LENGTH 5
   #define RGBLIGHT_EFFECT_STATIC_GRADIENT
+ #endif
 
 // place overrides here

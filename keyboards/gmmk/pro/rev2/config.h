@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 /* External spi flash */
 #define EXTERNAL_FLASH_SPI_SLAVE_SELECT_PIN B12

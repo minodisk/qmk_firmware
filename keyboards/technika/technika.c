@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "quantum.h"
+#include "technika.h"
 
 void keyboard_pre_init_kb(void) {
     setPinOutput(A15);

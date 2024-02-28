@@ -22,11 +22,11 @@ static matrix_row_t matrix[MATRIX_ROWS] = {};
 
 void matrix_init(void) {
     clear_all_keys();
-    matrix_init_kb();
+    matrix_init_quantum();
 }
 
 uint8_t matrix_scan(void) {
-    matrix_scan_kb();
+    matrix_scan_quantum();
     return 1;
 }
 
@@ -41,15 +41,11 @@ void matrix_init_kb(void) {}
 void matrix_scan_kb(void) {}
 
 void press_key(uint8_t col, uint8_t row) {
-    matrix[row] |= (matrix_row_t)1 << col;
+    matrix[row] |= 1 << col;
 }
 
 void release_key(uint8_t col, uint8_t row) {
-    matrix[row] &= ~((matrix_row_t)1 << col);
-}
-
-bool matrix_is_on(uint8_t row, uint8_t col) {
-    return (matrix[row] & ((matrix_row_t)1 << col));
+    matrix[row] &= ~(1 << col);
 }
 
 void clear_all_keys(void) {

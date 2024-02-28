@@ -19,38 +19,38 @@
 bool process_sequencer(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch (keycode) {
-            case QK_SEQUENCER_ON:
+            case SQ_ON:
                 sequencer_on();
                 return false;
-            case QK_SEQUENCER_OFF:
+            case SQ_OFF:
                 sequencer_off();
                 return false;
-            case QK_SEQUENCER_TOGGLE:
+            case SQ_TOG:
                 sequencer_toggle();
                 return false;
-            case QK_SEQUENCER_TEMPO_DOWN:
+            case SQ_TMPD:
                 sequencer_decrease_tempo();
                 return false;
-            case QK_SEQUENCER_TEMPO_UP:
+            case SQ_TMPU:
                 sequencer_increase_tempo();
                 return false;
-            case QK_SEQUENCER_RESOLUTION_DOWN:
+            case SEQUENCER_RESOLUTION_MIN ... SEQUENCER_RESOLUTION_MAX:
+                sequencer_set_resolution(keycode - SEQUENCER_RESOLUTION_MIN);
+                return false;
+            case SQ_RESD:
                 sequencer_decrease_resolution();
                 return false;
-            case QK_SEQUENCER_RESOLUTION_UP:
+            case SQ_RESU:
                 sequencer_increase_resolution();
                 return false;
-            case QK_SEQUENCER_STEPS_ALL:
+            case SQ_SALL:
                 sequencer_set_all_steps_on();
                 return false;
-            case QK_SEQUENCER_STEPS_CLEAR:
+            case SQ_SCLR:
                 sequencer_set_all_steps_off();
                 return false;
             case SEQUENCER_STEP_MIN ... SEQUENCER_STEP_MAX:
                 sequencer_toggle_step(keycode - SEQUENCER_STEP_MIN);
-                return false;
-            case SEQUENCER_RESOLUTION_MIN ... SEQUENCER_RESOLUTION_MAX:
-                sequencer_set_resolution(keycode - SEQUENCER_RESOLUTION_MIN);
                 return false;
             case SEQUENCER_TRACK_MIN ... SEQUENCER_TRACK_MAX:
                 sequencer_toggle_single_active_track(keycode - SEQUENCER_TRACK_MIN);

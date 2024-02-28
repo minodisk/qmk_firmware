@@ -22,6 +22,5 @@ extern "C" {
 }
 #include "test_driver.hpp"
 #include "test_matrix.h"
-#include "test_keymap_key.hpp"
 #include "keyboard_report_util.hpp"
 #include "test_fixture.hpp"

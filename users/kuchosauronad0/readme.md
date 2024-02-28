@@ -38,7 +38,7 @@ TODO: Make use of `TD_SPC` and `TD_QT{1..3}`
 ## [Leader Key](#leader-key)
 To enable set `LEADER_ENABLE = yes` in file *rules.mk*
 
-|Leader sequence|program| description |
+|LEADER_DICTIONARY()|program| description |
 |---|---|---|
 | W |vim/tmux| save file, switch pane and repeat last command   |
 | T |tmux| send default prefix |
@@ -50,7 +50,7 @@ To enable set `LEADER_ENABLE = yes` in file *rules.mk*
 |V + T|vim | move current split to its own tab|
 |3x Backspace|keyboard| Reset Keyboard |
 
-Leader sequences are defined in *leader_user.c*
+`LEADER_DICTIONARY()` is defined in *leader.c*
 
 ## [Combo Keys](#combo-keys)
 To enable set `COMBO_ENABLE = yes` in file *rules.mk*.

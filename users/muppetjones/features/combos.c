@@ -27,7 +27,8 @@ const uint16_t PROGMEM h_comm_tab[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM l_u_scln[]   = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM j_m_caps[]   = {KC_J, KC_M, COMBO_END};
 
-combo_t key_combos[] = {
+// COMBO_COUNT defined in config.h
+combo_t key_combos[COMBO_COUNT] = {
     [H_COMM_TAB] = COMBO(h_comm_tab, KC_TAB),
     [L_U_SCLN]   = COMBO(l_u_scln, KC_SCLN),
     [J_M_CAPS]   = COMBO(j_m_caps, KC_CAPS),

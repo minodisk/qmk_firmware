@@ -46,15 +46,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_BOOT,            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, BL_TOGG,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, BL_STEP,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, BL_UP, 
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, BL_DOWN,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, BL_INC,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, BL_DEC,
         _______, _______, _______,                            _______,                            _______, _______,          _______, _______, _______
         )
 };
 
-bool led_update_user(led_t led_state) {
+void led_set_user(uint8_t usb_led) {
 
-    if (led_state.num_lock) {
+    if (usb_led & (1 << USB_LED_NUM_LOCK)) {
         setPinOutput(B0);
         writePinLow(B0);
     } else {
@@ -62,7 +62,7 @@ bool led_update_user(led_t led_state) {
         writePinLow(B0);
     }
 
-    if (led_state.caps_lock) {
+    if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
         setPinOutput(B1);
         writePinLow(B1);
     } else {
@@ -70,12 +70,11 @@ bool led_update_user(led_t led_state) {
         writePinLow(B1);
     }
 
-    if (led_state.scroll_lock) {
+    if (usb_led & (1 << USB_LED_SCROLL_LOCK)) {
         setPinOutput(B2);
         writePinLow(B2);
     } else {
         setPinInput(B2);
         writePinLow(B2);
     }
-    return false;
 }

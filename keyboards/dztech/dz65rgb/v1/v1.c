@@ -13,10 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "quantum.h"
+#include "v1.h"
 
 #ifdef RGB_MATRIX_ENABLE
-const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT] = {
+const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
     { 0, C8_8,  C7_8,  C6_8 },
     { 0, C9_8,  C7_7,  C6_7 },
     { 0, C9_7,  C8_7,  C6_6 },
@@ -114,13 +114,10 @@ led_config_t g_led_config = {
 };
 
 
-bool rgb_matrix_indicators_kb(void) {
-    if (!rgb_matrix_indicators_user()) {
-        return false;
-    }
+__attribute__ ((weak))
+void rgb_matrix_indicators_user(void) {
     if (host_keyboard_led_state().caps_lock) {
         rgb_matrix_set_color(30, 0xFF, 0xFF, 0xFF);
     }
-    return true;
 }
 #endif

@@ -1,9 +1,4 @@
-#pragma once
-
 #ifdef OLED_ENABLE
-
-#include <stdint.h>
-#include "action.h"
 
 void render_logo(void);
 void update_key_status(uint16_t keycode, keyrecord_t *record);

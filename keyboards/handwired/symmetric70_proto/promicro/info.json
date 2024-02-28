@@ -1,8 +1,3 @@
 {
-    "keyboard_name": "Symmetric70 prototype promicro",
-    "split": {
-        "soft_serial_pin": "D0"
-    },
-    "processor": "atmega32u4",
-    "bootloader": "caterina"
+    "keyboard_name": "Symmetric70 prototype promicro"
 }

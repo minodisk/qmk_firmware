@@ -60,6 +60,7 @@ endif
 You're done! Now you can enable **Ocean Dream** by simply turning on the OLED feature
 ```makefile
 OLED_ENABLE = yes
+OLED_DRIVER = SSD1306
 ```
 
 And if you want to disable it without turning off the OLED Driver you can simply set 

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "matrix.h"
+#include QMK_KEYBOARD_H
 #include "mcp23018.h"
 
 #define SPLIT_MATRIX_COLS (MATRIX_COLS / 2)

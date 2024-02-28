@@ -15,6 +15,7 @@
  */
 #pragma once
 
+#include "config_common.h"
 
 #define RGB_INDICATOR_NUM 8
 #undef RGBLED_NUM

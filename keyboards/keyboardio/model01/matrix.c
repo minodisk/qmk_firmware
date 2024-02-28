@@ -77,14 +77,14 @@ void matrix_init(void) {
   i2c_set_keyscan_interval(RIGHT, 2);
   memset(rows, 0, sizeof(rows));
 
-  matrix_init_kb();
+  matrix_init_quantum();
 }
 
 uint8_t matrix_scan(void) {
   uint8_t ret = 0;
   ret |= i2c_read_hand(LEFT);
   ret |= i2c_read_hand(RIGHT);
-  matrix_scan_kb();
+  matrix_scan_quantum();
   return ret;
 }
 

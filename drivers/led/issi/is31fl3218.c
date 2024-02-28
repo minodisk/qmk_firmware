@@ -37,61 +37,60 @@ uint8_t g_twi_transfer_buffer[20];
 uint8_t g_pwm_buffer[18];
 bool    g_pwm_buffer_update_required = false;
 
-void is31fl3218_write_register(uint8_t reg, uint8_t data) {
+void IS31FL3218_write_register(uint8_t reg, uint8_t data) {
     g_twi_transfer_buffer[0] = reg;
     g_twi_transfer_buffer[1] = data;
     i2c_transmit(ISSI_ADDRESS, g_twi_transfer_buffer, 2, ISSI_TIMEOUT);
 }
 
-void is31fl3218_write_pwm_buffer(uint8_t *pwm_buffer) {
+void IS31FL3218_write_pwm_buffer(uint8_t *pwm_buffer) {
     g_twi_transfer_buffer[0] = ISSI_REG_PWM;
-    memcpy(g_twi_transfer_buffer + 1, pwm_buffer, 18);
+    for (int i = 0; i < 18; i++) {
+        g_twi_transfer_buffer[1 + i] = pwm_buffer[i];
+    }
 
     i2c_transmit(ISSI_ADDRESS, g_twi_transfer_buffer, 19, ISSI_TIMEOUT);
 }
 
-void is31fl3218_init(void) {
+void IS31FL3218_init(void) {
     // In case we ever want to reinitialize (?)
-    is31fl3218_write_register(ISSI_REG_RESET, 0x00);
+    IS31FL3218_write_register(ISSI_REG_RESET, 0x00);
 
     // Turn off software shutdown
-    is31fl3218_write_register(ISSI_REG_SHUTDOWN, 0x01);
+    IS31FL3218_write_register(ISSI_REG_SHUTDOWN, 0x01);
 
     // Set all PWM values to zero
     for (uint8_t i = 0; i < 18; i++) {
-        is31fl3218_write_register(ISSI_REG_PWM + i, 0x00);
+        IS31FL3218_write_register(ISSI_REG_PWM + i, 0x00);
     }
 
     // Enable all channels
     for (uint8_t i = 0; i < 3; i++) {
-        is31fl3218_write_register(ISSI_REG_CONTROL + i, 0b00111111);
+        IS31FL3218_write_register(ISSI_REG_CONTROL + i, 0b00111111);
     }
 
     // Load PWM registers and LED Control register data
-    is31fl3218_write_register(ISSI_REG_UPDATE, 0x01);
+    IS31FL3218_write_register(ISSI_REG_UPDATE, 0x01);
 }
 
-void is31fl3218_set_color(int index, uint8_t red, uint8_t green, uint8_t blue) {
-    if (g_pwm_buffer[index * 3 + 0] == red && g_pwm_buffer[index * 3 + 1] == green && g_pwm_buffer[index * 3 + 2] == blue) {
-        return;
-    }
+void IS31FL3218_set_color(int index, uint8_t red, uint8_t green, uint8_t blue) {
     g_pwm_buffer[index * 3 + 0]  = red;
     g_pwm_buffer[index * 3 + 1]  = green;
     g_pwm_buffer[index * 3 + 2]  = blue;
     g_pwm_buffer_update_required = true;
 }
 
-void is31fl3218_set_color_all(uint8_t red, uint8_t green, uint8_t blue) {
+void IS31FL3218_set_color_all(uint8_t red, uint8_t green, uint8_t blue) {
     for (int i = 0; i < 6; i++) {
-        is31fl3218_set_color(i, red, green, blue);
+        IS31FL3218_set_color(i, red, green, blue);
     }
 }
 
-void is31fl3218_update_pwm_buffers(void) {
+void IS31FL3218_update_pwm_buffers(void) {
     if (g_pwm_buffer_update_required) {
-        is31fl3218_write_pwm_buffer(g_pwm_buffer);
+        IS31FL3218_write_pwm_buffer(g_pwm_buffer);
         // Load PWM registers and LED Control register data
-        is31fl3218_write_register(ISSI_REG_UPDATE, 0x01);
+        IS31FL3218_write_register(ISSI_REG_UPDATE, 0x01);
     }
     g_pwm_buffer_update_required = false;
 }

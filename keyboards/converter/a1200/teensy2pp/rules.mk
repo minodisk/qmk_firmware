@@ -1,3 +1,9 @@
+# MCU name
+MCU = at90usb1286
+
+# Bootloader selection
+BOOTLOADER = halfkay
+
 # Build Options
 #   change yes to no to disable
 #

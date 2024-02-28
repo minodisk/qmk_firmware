@@ -21,6 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+/* Use I2C or Serial, not both */
+
+// #define USE_SERIAL
 #define USE_I2C
 
 /* Select hand configuration */
@@ -31,10 +34,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* key combination for magic key command */
 #undef IS_COMMAND
-#define IS_COMMAND() (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT)))
+#define IS_COMMAND() (get_mods() == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_LALT)))
 
 #ifdef RGBLIGHT_ENABLE
-#    define WS2812_DI_PIN D3
+#    define RGB_DI_PIN D3
 #    define RGBLED_NUM 16  // Number of LEDs
 #    define RGBLED_SPLIT \
         { 8, 8 }
@@ -53,12 +56,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    endif
 #endif  // AUDIO_ENABLE
 
+#undef PRODUCT
 #ifdef KEYBOARD_orthodox_rev1
-#    undef PRODUCT
-#    define PRODUCT "Drashna Hacked Orthodox Rev .1"
+#    define PRODUCT Drashna Hacked Orthodox Rev .1
 #elif KEYBOARD_orthodox_rev3
-#    undef PRODUCT
-#    define PRODUCT "Drashna Hacked Orthodox Rev .3"
+#    define PRODUCT Drashna Hacked Orthodox Rev .3
 #endif
 
 #define QMK_ESC_OUTPUT D7  // usually COL

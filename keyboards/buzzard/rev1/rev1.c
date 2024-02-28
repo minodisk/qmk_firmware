@@ -1,9 +1,9 @@
 // Copyright 2021 Christoph Rehmann (crehmann)
 // SPDX-License-Identifier: GPL-2.0-or-later
-#include "quantum.h"
+#include "rev1.h"
 
 #ifdef HAPTIC_ENABLE
-#include "drivers/haptic/drv2605l.h"
+#include "drivers/haptic/DRV2605L.h"
 #endif
 
 #ifdef SWAP_HANDS_ENABLE
@@ -100,27 +100,27 @@ __attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case 1:
 #ifdef HAPTIC_ENABLE
-            drv2605l_pulse(DRV2605L_EFFECT_SOFT_BUMP_100);
+            DRV_pulse(soft_bump);
 #endif
             break;
         case 2:
 #ifdef HAPTIC_ENABLE
-            drv2605l_pulse(DRV2605L_EFFECT_SHORT_DOUBLE_SHARP_TICK_1_100);
+            DRV_pulse(sh_dblsharp_tick);
 #endif
             break;
         case 3:
 #ifdef HAPTIC_ENABLE
-            drv2605l_pulse(DRV2605L_EFFECT_LONG_DOUBLE_SHARP_CLICK_STRONG_1_100);
+            DRV_pulse(lg_dblclick_str);
 #endif
             break;
         case 4:
 #ifdef HAPTIC_ENABLE
-            drv2605l_pulse(DRV2605L_EFFECT_SOFT_BUMP_100);
+            DRV_pulse(soft_bump);
 #endif
             break;
         case 5:
 #ifdef HAPTIC_ENABLE
-            drv2605l_pulse(DRV2605L_EFFECT_PULSING_SHARP_1_100);
+            DRV_pulse(pulsing_sharp);
 #endif
             break;
     }

@@ -18,7 +18,6 @@
 #include "eeconfig.h"
 #include "timer.h"
 #include "wait.h"
-#include "util.h"
 
 /* audio system:
  *
@@ -113,11 +112,7 @@ static bool    audio_initialized    = false;
 static bool    audio_driver_stopped = true;
 audio_config_t audio_config;
 
-void eeconfig_update_audio_current(void) {
-    eeconfig_update_audio(audio_config.raw);
-}
-
-void audio_init(void) {
+void audio_init() {
     if (audio_initialized) {
         return;
     }
@@ -190,7 +185,7 @@ bool audio_is_on(void) {
     return (audio_config.enable != 0);
 }
 
-void audio_stop_all(void) {
+void audio_stop_all() {
     if (audio_driver_stopped) {
         return;
     }
@@ -308,10 +303,6 @@ void audio_play_tone(float pitch) {
 void audio_play_melody(float (*np)[][2], uint16_t n_count, bool n_repeat) {
     if (!audio_config.enable) {
         audio_stop_all();
-        return;
-    }
-
-    if (n_count == 0) {
         return;
     }
 
@@ -551,42 +542,20 @@ void audio_decrease_tempo(uint8_t tempo_change) {
         note_tempo -= tempo_change;
 }
 
-/**
- * Converts from units of 1/64ths of a beat to milliseconds.
- *
- * Round-off error is at most 1 millisecond.
- *
- * Conversion will never overflow for duration_bpm <= 699, provided that
- * note_tempo is at least 10. This is quite a long duration, over ten beats.
- *
- * Beware that for duration_bpm > 699, the result may overflow uint16_t range
- * when duration_bpm is large compared to note_tempo:
- *
- *    duration_bpm * 60 * 1000 / (64 * note_tempo) > UINT16_MAX
- *
- *    duration_bpm > (2 * 65535 / 1875) * note_tempo
- *                 = 69.904 * note_tempo.
- */
+// TODO in the int-math version are some bugs; songs sometimes abruptly end - maybe an issue with the timer/system-tick wrapping around?
 uint16_t audio_duration_to_ms(uint16_t duration_bpm) {
-    return ((uint32_t)duration_bpm * 1875) / ((uint_fast16_t)note_tempo * 2);
+#if defined(__AVR__)
+    // doing int-math saves us some bytes in the overall firmware size, but the intermediate result is less accurate before being cast to/returned as uint
+    return ((uint32_t)duration_bpm * 60 * 1000) / (64 * note_tempo);
+    // NOTE: beware of uint16_t overflows when note_tempo is low and/or the duration is long
+#else
+    return ((float)duration_bpm * 60) / (64 * note_tempo) * 1000;
+#endif
 }
-
-/**
- * Converts from units of milliseconds to 1/64ths of a beat.
- *
- * Round-off error is at most 1/64th of a beat.
- *
- * This conversion never overflows: since duration_ms <= UINT16_MAX = 65535
- * and note_tempo <= 255, the result is always in uint16_t range:
- *
- *     duration_ms * 64 * note_tempo / 60 / 1000
- *     <= 65535 * 2 * 255 / 1875
- *      = 17825.52
- *     <= UINT16_MAX.
- */
 uint16_t audio_ms_to_duration(uint16_t duration_ms) {
-    return ((uint32_t)duration_ms * 2 * note_tempo) / 1875;
+#if defined(__AVR__)
+    return ((uint32_t)duration_ms * 64 * note_tempo) / 60 / 1000;
+#else
+    return ((float)duration_ms * 64 * note_tempo) / 60 / 1000;
+#endif
 }
-
-__attribute__((weak)) void audio_on_user(void) {}
-__attribute__((weak)) void audio_off_user(void) {}

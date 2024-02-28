@@ -1,1 +1,1 @@
-CONVERT_TO=proton_c
+CTPC = yes

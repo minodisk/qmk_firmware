@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "wt69_a.h"
 
 void keyboard_pre_init_kb(void) {
     setPinOutput(F1);

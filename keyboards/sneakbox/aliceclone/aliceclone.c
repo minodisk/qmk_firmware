@@ -15,9 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "quantum.h"
+#include "aliceclone.h"
 
-void keyboard_pre_init_kb(void) {
+void keyboard_pre_init_kb() {
     setPinOutput(D7);
     setPinOutput(D6);
     setPinOutput(D4);

@@ -2,6 +2,13 @@
 */
 #include QMK_KEYBOARD_H
 
+#ifndef KEYMAP_GERMAN
+#define KEYMAP_GERMAN
+
+#include "keymap.h"
+
+#endif
+
 //Tap Dance Declarations
 enum {
   TD_ESC_RUPT = 0
@@ -12,7 +19,7 @@ enum {
 };
 
 //Tap Dance Definitions
-tap_dance_action_t tap_dance_actions[] = {
+qk_tap_dance_action_t tap_dance_actions[] = {
   //Tap once for Esc, twice Ctrl+Alt+Del
   [TD_ESC_RUPT]  = ACTION_TAP_DANCE_DOUBLE(KC_ESC, LALT(LCTL(KC_DEL))),
   [TD_TAB]  = ACTION_TAP_DANCE_DOUBLE(KC_LCTL, LGUI(KC_TAB))

@@ -83,7 +83,7 @@ void matrix_init_custom(void) {
     // initialize key pins
     init_pins();
 
-    matrix_init_kb();
+    matrix_init_quantum();
 }
 
 bool matrix_scan_custom(matrix_row_t current_matrix[]) {
@@ -94,6 +94,6 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
         changed |= read_cols_on_row(current_matrix, current_row);
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
     return changed;
 }

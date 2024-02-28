@@ -74,7 +74,7 @@ void matrix_init(void)
     matrix_debouncing[row] = 0;
   }
   debounce_init(MATRIX_ROWS);
-  matrix_init_kb();
+  matrix_init_quantum();
 }
 
 uint8_t matrix_scan(void)
@@ -127,7 +127,7 @@ uint8_t matrix_scan(void)
 
   debounce(matrix_debouncing, matrix, MATRIX_ROWS, changed);
 
-  matrix_scan_kb();
+  matrix_scan_quantum();
 
 #ifdef DEBUG_MATRIX
   for (uint8_t c = 0; c < MATRIX_COLS; c++)

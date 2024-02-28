@@ -14,8 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
 #include "quantum.h"
 
 #ifndef VIA_ENABLE
@@ -48,31 +46,31 @@
 #    endif
 #else
 #    ifndef RGB_MATRIX_TOGGLE
-#        define RGB_MATRIX_TOGGLE QK_KB_0
+#        define RGB_MATRIX_TOGGLE USER00
 #    endif
 #    ifndef RGB_MATRIX_MODE_INC
-#        define RGB_MATRIX_MODE_INC QK_KB_1
+#        define RGB_MATRIX_MODE_INC USER01
 #    endif
 #    ifndef RGB_MATRIX_MODE_DEC
-#        define RGB_MATRIX_MODE_DEC QK_KB_2
+#        define RGB_MATRIX_MODE_DEC USER02
 #    endif
 #    ifndef RGB_MATRIX_HUE_INC
-#        define RGB_MATRIX_HUE_INC QK_KB_3
+#        define RGB_MATRIX_HUE_INC USER03
 #    endif
 #    ifndef RGB_MATRIX_HUE_DEC
-#        define RGB_MATRIX_HUE_DEC QK_KB_4
+#        define RGB_MATRIX_HUE_DEC USER04
 #    endif
 #    ifndef RGB_MATRIX_SAT_INC
-#        define RGB_MATRIX_SAT_INC QK_KB_5
+#        define RGB_MATRIX_SAT_INC USER05
 #    endif
 #    ifndef RGB_MATRIX_SAT_DEC
-#        define RGB_MATRIX_SAT_DEC QK_KB_6
+#        define RGB_MATRIX_SAT_DEC USER06
 #    endif
 #    ifndef RGB_MATRIX_VAL_INC
-#        define RGB_MATRIX_VAL_INC QK_KB_7
+#        define RGB_MATRIX_VAL_INC USER07
 #    endif
 #    ifndef RGB_MATRIX_VAL_DEC
-#        define RGB_MATRIX_VAL_DEC QK_KB_8
+#        define RGB_MATRIX_VAL_DEC USER08
 #    endif
 #endif
 

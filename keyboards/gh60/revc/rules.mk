@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -8,3 +14,5 @@ EXTRAKEY_ENABLE = yes		# Audio control and System control
 # COMMAND_ENABLE = yes		# Commands for debug and configuration
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 # BACKLIGHT_ENABLE = yes	# Enable keyboard backlight functionality
+
+LAYOUTS = 60_ansi 60_iso 60_ansi_split_bs_rshift 60_tsangan_hhkb

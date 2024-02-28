@@ -14,7 +14,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "quantum.h"
+#include "1337.h"
 
 void eeconfig_init_kb(void) {
 #ifdef BACKLIGHT_ENABLE

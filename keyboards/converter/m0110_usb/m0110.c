@@ -318,31 +318,31 @@ static inline uint8_t instant(void) {
     return data;
 }
 
-static inline void clock_lo(void) {
+static inline void clock_lo() {
     M0110_CLOCK_PORT &= ~(1 << M0110_CLOCK_BIT);
     M0110_CLOCK_DDR |= (1 << M0110_CLOCK_BIT);
 }
-static inline void clock_hi(void) {
+static inline void clock_hi() {
     /* input with pull up */
     M0110_CLOCK_DDR &= ~(1 << M0110_CLOCK_BIT);
     M0110_CLOCK_PORT |= (1 << M0110_CLOCK_BIT);
 }
-static inline bool clock_in(void) {
+static inline bool clock_in() {
     M0110_CLOCK_DDR &= ~(1 << M0110_CLOCK_BIT);
     M0110_CLOCK_PORT |= (1 << M0110_CLOCK_BIT);
     _delay_us(1);
     return M0110_CLOCK_PIN & (1 << M0110_CLOCK_BIT);
 }
-static inline void data_lo(void) {
+static inline void data_lo() {
     M0110_DATA_PORT &= ~(1 << M0110_DATA_BIT);
     M0110_DATA_DDR |= (1 << M0110_DATA_BIT);
 }
-static inline void data_hi(void) {
+static inline void data_hi() {
     /* input with pull up */
     M0110_DATA_DDR &= ~(1 << M0110_DATA_BIT);
     M0110_DATA_PORT |= (1 << M0110_DATA_BIT);
 }
-static inline bool data_in(void) {
+static inline bool data_in() {
     M0110_DATA_DDR &= ~(1 << M0110_DATA_BIT);
     M0110_DATA_PORT |= (1 << M0110_DATA_BIT);
     _delay_us(1);

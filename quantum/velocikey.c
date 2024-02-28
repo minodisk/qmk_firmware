@@ -2,7 +2,13 @@
 #include "timer.h"
 #include "eeconfig.h"
 #include "eeprom.h"
-#include "util.h"
+
+#ifndef MIN
+#    define MIN(a, b) (((a) < (b)) ? (a) : (b))
+#endif
+#ifndef MAX
+#    define MAX(a, b) (((a) > (b)) ? (a) : (b))
+#endif
 
 #define TYPING_SPEED_MAX_VALUE 200
 uint8_t typing_speed = 0;

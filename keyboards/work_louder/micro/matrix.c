@@ -4,13 +4,16 @@
 /*
  * scan matrix
  */
-#include "matrix.h"
-#include <string.h>
-#include "atomic_util.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include <avr/io.h>
 #include "wait.h"
+#include "print.h"
 #include "debug.h"
 #include "util.h"
+#include "matrix.h"
 #include "debounce.h"
+#include QMK_KEYBOARD_H
 
 /* matrix state(1:on, 0:off) */
 extern matrix_row_t matrix[MATRIX_ROWS];     // debounced values

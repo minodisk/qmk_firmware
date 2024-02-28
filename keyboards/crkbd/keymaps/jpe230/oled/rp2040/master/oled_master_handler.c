@@ -40,7 +40,7 @@ void oled_render_layer_state(void) {
 
 }
 
-void render_master_oled(void) {
+void render_master_oled() {
     if (timer_elapsed32(oled_timer) > CUSTOM_OLED_TIMEOUT) {
         oled_off();
         return;

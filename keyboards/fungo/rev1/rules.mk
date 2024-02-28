@@ -1,3 +1,12 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina  # controller pro micro
+# BOOTLOADER = atmel-dfu   # controller Elite-C
+
+
+
 # Build Options
 #   change yes to no to disable
 #
@@ -14,4 +23,6 @@ KEY_LOCK_ENABLE = yes       # kc_lock use
 
 
 OLED_ENABLE = no
+OLED_DRIVER = SSD1306      # OLED display
 SPLIT_KEYBOARD = yes       # split type
+

@@ -14,7 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "q1.h"
+
 
 const matrix_row_t matrix_mask[] = {
     0b0111111111111101,
@@ -25,8 +26,6 @@ const matrix_row_t matrix_mask[] = {
     0b0111111111111111,
 };
 
-#ifdef DIP_SWITCH_ENABLE
-
 bool dip_switch_update_kb(uint8_t index, bool active) {
     if (!dip_switch_update_user(index, active)) { return false;}
     if (index == 0) {
@@ -34,5 +33,3 @@ bool dip_switch_update_kb(uint8_t index, bool active) {
     }
     return true;
 }
-
-#endif // DIP_SWITCH_ENABLE

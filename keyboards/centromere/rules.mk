@@ -1,5 +1,11 @@
+# MCU name
+MCU = atmega32u4
+
 # Processor frequency
 F_CPU = 8000000
+
+# Bootloader selection
+BOOTLOADER = caterina
 
 # Build Options
 #   change yes to no to disable
@@ -19,3 +25,5 @@ CUSTOM_MATRIX = lite
 # project specific files
 SRC += matrix.c
 QUANTUM_LIB_SRC += uart.c
+
+LAYOUTS = split_3x5_3 split_3x6_3

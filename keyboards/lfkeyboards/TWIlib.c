@@ -24,7 +24,7 @@ int RXBuffLen; // The total number of bytes to read (should be less than RXMAXBU
 
 TWIInfoStruct TWIInfo;
 
-void TWIInit(void)
+void TWIInit()
 {
 	TWIInfo.mode = Ready;
 	TWIInfo.errorCode = 0xFF;
@@ -37,7 +37,7 @@ void TWIInit(void)
 	TWCR = (1 << TWIE) | (1 << TWEN);
 }
 
-uint8_t isTWIReady(void)
+uint8_t isTWIReady()
 {
 	if ( (TWIInfo.mode == Ready) | (TWIInfo.mode == RepeatedStartSent) )
 	{

@@ -16,5 +16,5 @@
 
 #pragma once
 
-#define QUICK_TAP_TERM 0
+#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100

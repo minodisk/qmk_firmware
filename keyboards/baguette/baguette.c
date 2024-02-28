@@ -13,11 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "quantum.h"
-
-#ifndef DEBOUNCE
-#    define DEBOUNCE 5
-#endif
+#include "baguette.h"
 
 void bootmagic_lite(void)
 {

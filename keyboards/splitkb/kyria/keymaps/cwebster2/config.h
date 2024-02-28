@@ -21,6 +21,7 @@
 #endif
 
 #ifdef RGBLIGHT_ENABLE
+  //#define RGBLIGHT_ANIMATIONS
   //#define RGBLIGHT_EFFECT_ALTERNATING
   #define RGBLIGHT_EFFECT_BREATHING
   //#define RGBLIGHT_EFFECT_CHRISTMAS
@@ -40,6 +41,10 @@
   #define RGBLIGHT_LAYERS
   #define RGBLIGHT_MAX_LAYERS 16
   //#define RGBLIGHT_STARTUP_ANIMATION
+#endif
+
+#ifdef COMBO_ENABLE
+  #define COMBO_COUNT 5
 #endif
 
 #define EE_HANDS

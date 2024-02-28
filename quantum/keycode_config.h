@@ -16,10 +16,6 @@
 
 #pragma once
 
-#ifdef __cplusplus
-#    define _Static_assert static_assert
-#endif
-
 #include "eeconfig.h"
 #include "keycode.h"
 #include "action_code.h"
@@ -43,10 +39,7 @@ typedef union {
         bool swap_rctl_rgui : 1;
         bool oneshot_enable : 1;
         bool swap_escape_capslock : 1;
-        bool autocorrect_enable : 1;
     };
 } keymap_config_t;
-
-_Static_assert(sizeof(keymap_config_t) == sizeof(uint16_t), "Keycode (magic) EECONFIG out of spec.");
 
 extern keymap_config_t keymap_config;

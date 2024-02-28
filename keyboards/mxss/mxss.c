@@ -16,9 +16,11 @@
  * EEPROM management code from ../cannonkeys/stm32f072/keyboard.c
  */
 
-#include "quantum.h"
+#include QMK_KEYBOARD_H
 #include "eeprom.h"
-#include "mxss_frontled.h"
+#include "action_layer.h"
+#include "rgblight.h"
+#include "via.h"
 #include "version.h" // for QMK_BUILDDATE used in EEPROM magic
 
 void via_init_kb(void) {

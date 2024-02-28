@@ -1,3 +1,9 @@
+# MCU name
+MCU = STM32F042
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -10,3 +16,8 @@ COMMAND_ENABLE = no    				# Commands for debug and configuration
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 NO_USB_STARTUP_CHECK = no         	# Disable initialization only when usb is plugged in
 
+LAYOUTS = 65_ansi_blocker
+
+
+# Enter lower-power sleep mode when on the ChibiOS idle thread
+OPT_DEFS += -DCORTEX_ENABLE_WFI_IDLE=TRUE

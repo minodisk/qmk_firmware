@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # Build Options
 #   change yes to no to disable
 #
@@ -13,4 +19,5 @@ RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 
 SPLIT_KEYBOARD = yes
 
+LAYOUTS = ortho_4x12
 DEFAULT_FOLDER = keebio/levinson/rev2

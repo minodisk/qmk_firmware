@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = halfkay
+
 # Build Options
 #   change yes to no to disable
 #
@@ -9,3 +15,5 @@ COMMAND_ENABLE = yes        # Commands for debug and configuration
 NKRO_ENABLE = no            # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
+
+LAYOUTS = numpad_5x4

@@ -36,6 +36,7 @@
 #define HOME_MODS
 // fix dual function timing
 #define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
 
 // layout ADNW*, BEAKL*, COLEKA*, QWERTY (default)
 #define DEFAULT

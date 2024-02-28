@@ -23,10 +23,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * to repeating that information all over the place.
  */
 
-#include "matrix.h"
-#include "debug.h"
-#include "wait.h"
+#include QMK_KEYBOARD_H
 #include "i2c_master.h"
+#include <print.h>
 
 extern i2c_status_t mcp23017_status;
 #define MCP23017_I2C_TIMEOUT 1000

@@ -13,11 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "quantum.h"
+#include "ut47.h"
 #ifdef LED_ENABLE
   #include "uart.h"
 
-void matrix_init_kb(void) {
+void matrix_init_kb() {
   uart_init(9600);
 }
 #endif

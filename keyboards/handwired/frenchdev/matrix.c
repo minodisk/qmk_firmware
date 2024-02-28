@@ -111,7 +111,7 @@ void matrix_init(void)
         matrix_debouncing[i] = 0;
     }
 
-    matrix_init_kb();
+    matrix_init_quantum();
 }
 
 void matrix_power_up(void) {
@@ -169,7 +169,7 @@ uint8_t matrix_scan(void)
         }
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
 
     return 1;
 }

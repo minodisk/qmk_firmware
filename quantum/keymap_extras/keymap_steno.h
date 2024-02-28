@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "keycodes.h"
+#include "keymap.h"
 
 // List of keycodes for the steno keyboard. To prevent
 // errors, this must be <= 42 total entries in order to

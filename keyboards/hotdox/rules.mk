@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -17,3 +23,5 @@ RGBLIGHT_ENABLE         = no
 SRC =  matrix.c     \
 	   i2c_master.c \
        left.c
+
+LAYOUTS = ergodox

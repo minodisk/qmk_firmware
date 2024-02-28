@@ -1,3 +1,6 @@
+# MCU name
+MCU = atmega32u4
+
 # Build Options
 #   change yes to no to disable
 #

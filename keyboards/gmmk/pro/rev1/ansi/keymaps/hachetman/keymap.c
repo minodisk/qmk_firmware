@@ -83,8 +83,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else {
       tap_code(KC_VOLD);
     }
-    //return true; //set to return false to counteract enabled encoder in pro.c
-    return false;
+    return true;
 }
 #endif // ENCODER_ENABLE
 
@@ -220,7 +219,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-bool rgb_matrix_indicators_user(void) {
+void rgb_matrix_indicators_user() {
     #if RGB_CONFIRMATION_BLINKING_TIME > 0
     if (effect_started_time > 0) {
         /* Render blinking EFFECTS */
@@ -258,11 +257,10 @@ bool rgb_matrix_indicators_user(void) {
     if (host_keyboard_led_state().caps_lock) {
         set_rgb_caps_leds();
     }
-    return false;
 }
 
 #if RGB_CONFIRMATION_BLINKING_TIME > 0
-static void start_effects(void) {
+static void start_effects() {
     effect_started_time = sync_timer_read();
     if (!rgb_matrix_is_enabled()) {
         /* Turn it ON, signal the cause (EFFECTS) */
@@ -286,7 +284,7 @@ static void start_effects(void) {
 //  87, led 07                                                                                                                                                                      88, led 18
 //  91, led 08                                                                                                                                                                      92, led 19
 
-static void set_rgb_caps_leds(void) {
+static void set_rgb_caps_leds() {
     rgb_matrix_set_color(67, 0xFF, 0x0, 0x0); // Left side LED 1
     rgb_matrix_set_color(68, 0xFF, 0x0, 0x0); // Right side LED 1
     rgb_matrix_set_color(70, 0xFF, 0x0, 0x0); // Left side LED 2

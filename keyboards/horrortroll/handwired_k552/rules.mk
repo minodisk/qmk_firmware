@@ -1,17 +1,11 @@
-SRC += lib/logo.c
-
 # MCU name
 MCU = STM32F103
 
-# Bootloader selection
-# Cannot use `BOOTLOADER = stm32duino` due to the need to override
-# `MCU_LDSCRIPT`, therefore all parameters need to be specified here manually.
-OPT_DEFS += -DBOOTLOADER_STM32DUINO
 MCU_LDSCRIPT = k552_f103
-BOARD = STM32_F103_STM32DUINO
-BOOTLOADER_TYPE = stm32duino
-DFU_ARGS = -d 1EAF:0003 -a 2 -R
-DFU_SUFFIX_ARGS = -v 1EAF -p 0003
+BOARD = k552
+
+# Bootloader selection
+BOOTLOADER = stm32duino
 
 # Build Options
 #   change yes to no to disable
@@ -25,14 +19,16 @@ NKRO_ENABLE = yes           # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
+NO_USB_STARTUP_CHECK = yes
+LTO_ENABLE = yes
 
 # RGB Matrix enabled
 RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = WS2812
 
 # OLED enabled
 OLED_ENABLE = yes
+OLED_DRIVER = SSD1306
 WPM_ENABLE = yes
 
-# Wear-levelling driver
-EEPROM_DRIVER = wear_leveling
-WEAR_LEVELING_DRIVER = spi_flash
+LAYOUTS = tkl_ansi

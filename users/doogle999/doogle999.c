@@ -389,11 +389,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
 			/* KC_KP_1, KC_KP_2, ..., KC_KP_0, KC_KP_DOT */
 			(keycode >= KC_KP_1 && keycode <= KC_KP_DOT);
 
-		if(numpadKeyPressed && !host_keyboard_led_state().num_lock)
+		if(numpadKeyPressed && !(host_keyboard_leds() & (1 << USB_LED_NUM_LOCK)))
 		{
-			add_key(KC_NUM_LOCK);
+			add_key(KC_NLCK);
 			send_keyboard_report();
-			del_key(KC_NUM_LOCK);
+			del_key(KC_NLCK);
 		}
 	}
 

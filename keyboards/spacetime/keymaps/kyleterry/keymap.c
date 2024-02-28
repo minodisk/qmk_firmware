@@ -98,7 +98,23 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-void td_common(tap_dance_state_t *state, void *user_data) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
+
+void matrix_init_user(void) {
+
+}
+
+void matrix_scan_user(void) {
+
+}
+
+void led_set_user(uint8_t usb_led) {
+
+}
+
+void td_common(qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
     case 1:
       /* this case handles ctrl+o which is my tmux prefix
@@ -116,7 +132,7 @@ void td_common(tap_dance_state_t *state, void *user_data) {
   }
 }
 
-void td_media(tap_dance_state_t *state, void *user_data) {
+void td_media(qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
     case 1:
       tap_code16(KC_MPLY);
@@ -129,7 +145,7 @@ void td_media(tap_dance_state_t *state, void *user_data) {
   }
 }
 
-tap_dance_action_t tap_dance_actions[] = {
+qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_C]  = ACTION_TAP_DANCE_FN(td_common),
   [TD_MD] = ACTION_TAP_DANCE_FN(td_media),
 };

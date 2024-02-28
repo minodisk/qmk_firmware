@@ -14,7 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "bb.h"
+
 
 void led_init_ports(void) {
   setPinOutput(C0);

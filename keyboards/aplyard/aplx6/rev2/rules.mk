@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = caterina
+
 # Build Options
 #   change yes to no to disable
 #
@@ -12,4 +18,5 @@ RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 UNICODE_ENABLE = yes        # Unicode
 OLED_ENABLE = yes
+OLED_DRIVER = SSD1306    # Enable Support for Oled Display
 ENCODER_ENABLE = yes        # Enable Support for Encoder

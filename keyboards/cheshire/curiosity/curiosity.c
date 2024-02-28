@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "curiosity.h"
 
 void matrix_init_board(void){
     setPinOutput(A8);

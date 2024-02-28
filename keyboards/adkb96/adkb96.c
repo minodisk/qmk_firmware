@@ -1,4 +1,4 @@
-#include "quantum.h"
+#include "adkb96.h"
 
 #ifdef SWAP_HANDS_ENABLE
 __attribute__ ((weak))

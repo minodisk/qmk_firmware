@@ -1,1 +1,1 @@
-# The via keymap for dtisaac01
+# The default keymap for dtisaac01

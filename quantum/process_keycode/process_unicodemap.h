@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include <stdbool.h>
-#include <stdint.h>
-#include "action.h"
+#include "process_unicode_common.h"
 
-bool process_unicodemap(uint16_t keycode, keyrecord_t *record);
+extern const uint32_t PROGMEM unicode_map[];
+
+uint16_t unicodemap_index(uint16_t keycode);
+bool     process_unicodemap(uint16_t keycode, keyrecord_t *record);
