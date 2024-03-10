@@ -17,7 +17,9 @@
 #include QMK_KEYBOARD_H
 
 enum planck_layers {
-  _QWERTY,
+  _MAC,
+  _WIN,
+  _GAME,
   _LOWER,
   _RAISE,
   _ADJUST
@@ -29,14 +31,18 @@ enum planck_keycodes {
 
 #define MO_ADJ   MO(_ADJUST)
 #define SC_SLEEP LAG(KC_PWR)
-#define SC_SPOT  A(KC_SPC)
-#define SC_SSF   LSG(KC_4)
-#define SC_SSC   G(C(S(KC_4)))
-#define SC_EMO   G(C(KC_SPC))
+
+#define MA_PRSC  LSG(KC_4)
+#define WI_PRSC  LSG(KC_S)
+
+#define MA_EMO   G(C(KC_SPC))
+#define WI_EMO   G(KC_DOT)
+
+#define MA_SPOT  A(KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Qwerty
+/* Mac
  * ,-----------------------------------------------------------------------.
  * | Tab |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  -  |
  * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
@@ -44,14 +50,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
  * |Shift|  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |  \  |
  * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
- * | Ja  | Scr |     |AltJa|CmdBs|LoEsc|RaEnt|ClSpc|SftEn|     | Emo | En  |
+ * |PrScr|PrTab|NxTab|AltJa|CmdBs|LoEsc|RaEnt|CtlSp|SftEn|PrWin|NxWin| Emo |
  * `-----------------------------------------------------------------------'
  */
-[_QWERTY] = LAYOUT_ortho_4x12(
-  KC_TAB,  KC_Q,   KC_W,    KC_E,            KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,            KC_O,    KC_P,    KC_MINS,
-  KC_LCTL, KC_A,   KC_S,    KC_D,            KC_F,            KC_G,               KC_H,               KC_J,           KC_K,            KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,   KC_X,    KC_C,            KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,         KC_DOT,  KC_SLSH, KC_BSLS,
-  SC_SSF,  SC_SSC, _______, LALT_T(KC_LNG1), LGUI_T(KC_BSPC), LT(_LOWER, KC_ESC), LT(_RAISE, KC_ENT), RCTL_T(KC_SPC), RSFT_T(KC_LNG2), _______, SC_EMO,  SC_EMO
+[_MAC] = LAYOUT_ortho_4x12(
+  KC_TAB,  KC_Q,    KC_W,    KC_E,            KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,            KC_O,    KC_P,    KC_MINS,
+  KC_LCTL, KC_A,    KC_S,    KC_D,            KC_F,            KC_G,               KC_H,               KC_J,           KC_K,            KC_L,    KC_SCLN, KC_QUOT,
+  KC_LSFT, KC_Z,    KC_X,    KC_C,            KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,         KC_DOT,  KC_SLSH, KC_BSLS,
+  MA_PRSC, _______, _______, LALT_T(KC_LNG1), LGUI_T(KC_BSPC), LT(_LOWER, KC_ESC), LT(_RAISE, KC_ENT), RCTL_T(KC_SPC), RSFT_T(KC_LNG2), _______, _______, MA_EMO
+),
+
+/* Win
+ * ,-----------------------------------------------------------------------.
+ * | Tab |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  -  |
+ * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+ * | Ctl |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |
+ * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+ * |Shift|  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |  \  |
+ * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+ * |PrScr|PrTab|NxTab|AltJa|CtlBs|LoEsc|RaEnt|GuiSp|SftEn|     | Emo | Emo  |
+ * `-----------------------------------------------------------------------'
+ */
+[_WIN] = LAYOUT_ortho_4x12(
+  _______, _______, _______, _______,         _______, _______, _______,        _______, _______, _______, _______, _______,
+  _______, _______, _______, _______,         _______, _______, _______,        _______, _______, _______, _______, _______,
+  _______, _______, _______, _______,         _______, _______, _______,        _______, _______, _______, _______, _______,
+  WI_PRSC, _______, _______, _______, LCTL_T(KC_BSPC), _______, _______, RGUI_T(KC_SPC), _______, _______, DF(_GAME), WI_EMO
+),
+
+/* Game
+ * ,-----------------------------------------------------------------------.
+ * | Tab |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  -  |
+ * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+ * | Ctl |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |
+ * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+ * |Shift|  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |  \  |
+ * |-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+ * |PrScr|PrTab|NxTab|AltJa|CtlBs|LoEsc|RaEnt|GuiSp|SftEn|     | Emo | Emo  |
+ * `-----------------------------------------------------------------------'
+ */
+[_GAME] = LAYOUT_ortho_4x12(
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, KC_BSPC, _______, _______, KC_SPC,  _______, _______, DF(_WIN), _______
 ),
 
 /* Lower
@@ -112,4 +154,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
+
+bool process_detected_host_os_kb(os_variant_t detected_os) {
+  if (!process_detected_host_os_user(detected_os)) {
+    return false;
+  }
+  switch (detected_os) {
+    case OS_MACOS:
+    case OS_IOS:
+      layer_move(_MAC);
+      break;
+    default:
+      layer_move(_WIN);
+      break;
+  }
+  return true;
 }
