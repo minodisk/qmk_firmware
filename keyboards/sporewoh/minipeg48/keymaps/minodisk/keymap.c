@@ -54,10 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------'
  */
 [_MAC] = LAYOUT_ortho_4x12(
-  KC_TAB,  KC_Q,    KC_W,    KC_E,            KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,            KC_O,    KC_P,    KC_MINS,
-  KC_LCTL, KC_A,    KC_S,    KC_D,            KC_F,            KC_G,               KC_H,               KC_J,           KC_K,            KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,            KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,         KC_DOT,  KC_SLSH, KC_BSLS,
-  MA_PRSC, _______, _______, LALT_T(KC_LNG1), LGUI_T(KC_BSPC), LT(_LOWER, KC_ESC), LT(_RAISE, KC_ENT), RCTL_T(KC_SPC), RSFT_T(KC_LNG2), _______, _______, MA_EMO
+  KC_TAB,  KC_Q,  KC_W,  KC_E,            KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,            KC_O,   KC_P,    KC_MINS,
+  KC_LCTL, KC_A,  KC_S,  KC_D,            KC_F,            KC_G,               KC_H,               KC_J,           KC_K,            KC_L,   KC_SCLN, KC_QUOT,
+  KC_LSFT, KC_Z,  KC_X,  KC_C,            KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,         KC_DOT, KC_SLSH, KC_BSLS,
+  MA_PRSC, KC_F1, KC_F2, LALT_T(KC_LNG1), LGUI_T(KC_BSPC), LT(_LOWER, KC_ESC), LT(_RAISE, KC_ENT), RCTL_T(KC_SPC), RSFT_T(KC_LNG2), KC_F3,  KC_F4,   MA_EMO
 ),
 
 /* Win
